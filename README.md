@@ -1,6 +1,7 @@
 # AdaptiveMe API Libraries for Darwin
 [![Build Status](https://travis-ci.org/AdaptiveMe/adaptive-arp-api-lib-darwin.svg?branch=master)](https://travis-ci.org/AdaptiveMe/adaptive-arp-api-lib-darwin)
 [![GitHub tag](https://img.shields.io/github/tag/AdaptiveMe/adaptive-arp-api-lib-darwin.svg)](https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin) 
+[![CocoaPods Tag](https://img.shields.io/cocoapods/v/AdaptiveArpApi.svg)](https://cocoapods.org/pods/AdaptiveArpApi) 
 [![License](https://img.shields.io/badge/license-apache%202-blue.svg)](https://raw.githubusercontent.com/AdaptiveMe/adaptive-arp-api/master/LICENSE) 
 [![Adaptive Development Tools](https://raw.githubusercontent.com/AdaptiveMe/AdaptiveMe.github.io/master/assets/logos/normal/Logo-libraries-for-Javafx.png)](#)
 
