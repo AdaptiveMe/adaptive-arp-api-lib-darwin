@@ -4,7 +4,7 @@
 [![CocoaPods Tag](https://img.shields.io/cocoapods/v/AdaptiveArpApi.svg)](https://cocoapods.org/pods/AdaptiveArpApi) 
 [![CocoaPods Platforms](https://img.shields.io/cocoapods/p/AdaptiveArpApi.svg)](https://cocoapods.org/pods/AdaptiveArpApi) 
 [![License](https://img.shields.io/badge/license-apache%202-blue.svg)](https://raw.githubusercontent.com/AdaptiveMe/adaptive-arp-api/master/LICENSE) 
-[![Java Library](https://img.shields.io/badge/libs-darwin-gray.svg)](https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin)
+[![Java Library](https://img.shields.io/badge/libs-darwin-yellow.svg)](https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin)
 [![adaptive.me](https://img.shields.io/badge/adaptive-me-fdcb0e.svg)](http://adaptive.me)
 
 [![Adaptive Development Tools](https://raw.githubusercontent.com/AdaptiveMe/AdaptiveMe.github.io/master/assets/logos/normal/Logo-libraries-for-Javafx.png)](#)
