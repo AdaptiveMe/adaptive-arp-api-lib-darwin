@@ -49,10 +49,6 @@ public class APIBean : NSObject {
         return param1 + param2
     }
     
-    ///-------------------------
-    /// @name Converting Objects
-    ///-------------------------
-    
     /**
     *  Struct description
     */
@@ -65,13 +61,20 @@ public class APIBean : NSObject {
         
         :returns: Returns Json parameter
         */
-        static func fromJSON(json : String) -> APIBean {
+        public static func fromJSON(json : String) -> APIBean {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
             return fromDictionary(dict)
         }
         
+        /**
+        adas
+        
+        :param: dict asdasd
+        
+        :returns: sadfdfs
+        */
         static func fromDictionary(dict : NSDictionary) -> APIBean {
             var resultObject : APIBean = APIBean()
             
