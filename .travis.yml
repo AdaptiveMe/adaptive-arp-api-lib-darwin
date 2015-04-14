@@ -12,9 +12,9 @@ before_script:
 - git config --global push.default simple
 - echo "https://${GH_TOKEN}:@github.com" > $HOME/.git/credentials
 - export GIT_TAG=`git describe --tags --abbrev=0`
-- echo ${PORK_MODE1} > $HOME/.netrc
-- echo ${PORK_MODE2} >> $HOME/.netrc
-- echo ${PORK_MODE3} >> $HOME/.netrc
+- echo $PORK_MODE1 > $HOME/.netrc
+- echo $PORK_MODE2 >> $HOME/.netrc
+- echo $PORK_MODE3 >> $HOME/.netrc
 script:
 - pod trunk me
 - pod lib lint --quick
