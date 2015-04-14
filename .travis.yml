@@ -2,6 +2,7 @@ sudo: false
 language: objective-c
 install:
 - gem install cocoapods
+- rake bootstrap
 before_script:
 - export HOME=`pwd`
 - export TIMESTAMP=`date`
@@ -11,12 +12,14 @@ before_script:
 - git config --global user.name "carloslozano"
 - git config --global push.default simple
 - echo "https://${GH_TOKEN}:@github.com" > $HOME/.git/credentials
-- export GIT_TAG=`git describe --abbrev=0`
+- export GIT_TAG=`git describe --tags --abbrev=0`
 script:
 - pod lib lint --quick
 after_success: |-
   if [ "$TRAVIS_BRANCH" == "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "Publish to Cocoapods..."
+    #git remote set-url origin "https://${GH_TOKEN}@github.com/CocoaPods/blog.cocoapods.org.git"
+    #rake deploy
   elif [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     export SOURCE_HOME=`pwd`
     mkdir -p temp
