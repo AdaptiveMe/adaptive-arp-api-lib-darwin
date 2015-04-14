@@ -1,20 +1,48 @@
-# references:
-# * http://www.objc.io/issue-6/travis-ci.html
-# * https://github.com/supermarin/xcpretty#usage
-
 sudo: false
 language: objective-c
-cache: cocoapods
-# podfile: AdaptiveArpApi.podspec
-
-# before_install:
-# - gem install cocoapods # Since Travis is not always on latest version
-# - pod install --project-directory=Example
-
 install:
-- gem install cocoapods # Since Travis is not always on latest version
-# - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-
+- gem install cocoapods
+before_script:
+- export HOME=`pwd`
+- export TIMESTAMP=`date`
+- mkdir -p .git
+- git config --global credential.helper "store --file=$HOME/.git/credentials"
+- git config --global user.email "carlos@adaptive.me"
+- git config --global user.name "carloslozano"
+- git config --global push.default simple
+- echo "https://${GH_TOKEN}:@github.com" > $HOME/.git/credentials
+- export GIT_TAG=`git describe --abbrev=0`
 script:
-# - set -o pipefail && xcodebuild test -workspace Example/AdaptiveArpApi.xcworkspace -scheme AdaptiveArpApi-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
 - pod lib lint --quick
+after_success: |-
+  if [ "$TRAVIS_BRANCH" == "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    echo "Publish to Cocoapods..."
+  elif [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    export SOURCE_HOME=`pwd`
+    mkdir -p temp
+    cd temp
+    git clone https://github.com/AdaptiveMe/adaptive-arp-api.git
+    cd adaptive-arp-api
+    export API_TAG=`git describe --abbrev=0`
+    export API_TAG=`echo ${API_TAG//[v]/ }`
+    rm -Rf $SOURCE_HOME/temp  
+    cd $SOURCE_HOME   
+    export POD_TAG=`node ./version.js`
+    echo Git: $GIT_TAG Pod: $POD_TAG Api: $API_TAG
+    if [ "$GIT_TAG" == "$POD_TAG" && "$GIT_TAG" != "$API_TAG" ]; then
+        echo "Bump version here to ${API_TAG}"
+        #git remote set-url origin https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin.git
+        #git add -u
+        #git commit -m "API Specification ${API_TAG} at ${TIMESTAMP}."
+        #git push origin HEAD:master 
+    elif [ "$GIT_TAG" != "$POD_TAG" && "$GIT_TAG" != "$API_TAG" ]; then
+        echo "Drop tag to ${API_TAG}"
+        #git tag -a "${API_TAG}" -m "API Specification ${API_TAG}"
+        #git push origin HEAD:master --tags
+    fi
+  fi
+after_failure:
+- echo "Having a bad moment..."
+env:
+  global:
+    secure: QFnB+ezMMh5uJAvqOba1CbGVOK1AjOBmUje+GBXHxa5KBaGQ37VX3D9V8QLCEZf/9b50h2URH3XuTlQ4TUAQoMBEfU/SFIvKemc+lgwIBd+lDVbceKuhLxl3c0ugEfwMGwlqdl0BNeA95/2ofX86EVKrUO0TLxa2CLM7l3UdIDo=
