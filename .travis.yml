@@ -21,7 +21,7 @@ script:
 after_success: |-
   if [ "$TRAVIS_BRANCH" == "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then  
     echo "Publish to Cocoapods..."    
-    
+    pod trunk push AdaptiveArpApi.podspec
   elif [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     export SOURCE_HOME=`pwd`
     mkdir -p temp
