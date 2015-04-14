@@ -36,13 +36,16 @@ after_success: |-
     echo Git: $GIT_TAG Pod: $POD_TAG Api: $API_TAG
     if [ "$GIT_TAG" == "$POD_TAG" -a "$GIT_TAG" != "$API_TAG" ]; then
         echo "Bump version here to ${API_TAG}"
-        git checkout master
         npm install -g podspec-bump
         podspec-bump -i $API_TAG -w
+        
+        export POD_TAG=`node ./version.js`
+        echo Pod: $POD_TAG
+        
         git remote set-url origin https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin.git
         git add -u
         git commit -m "API Specification ${API_TAG} at ${TIMESTAMP}."
-        git push origin
+        git push origin HEAD:master
     elif [ "$GIT_TAG" != "$POD_TAG" -a "$GIT_TAG" != "$API_TAG" ]; then
         echo "Drop tag to ${API_TAG}"
         #git remote set-url origin https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin.git
