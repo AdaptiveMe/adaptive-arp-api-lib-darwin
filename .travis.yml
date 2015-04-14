@@ -21,6 +21,7 @@ script:
 - pod lib lint --quick
 after_success: |-
   if [ "$TRAVIS_BRANCH" == "$TRAVIS_TAG" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+  
     echo "Publish to Cocoapods..."
     
   elif [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
@@ -39,10 +40,10 @@ after_success: |-
         echo "Bump version here to ${API_TAG}"
         npm install -g podspec-bump
         podspec-bump -i $API_TAG -w
-        #git remote set-url origin https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin.git
-        #git add -u
-        #git commit -m "API Specification ${API_TAG} at ${TIMESTAMP}."
-        #git push origin HEAD:master 
+        git remote set-url origin https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin.git
+        git add -u
+        git commit -m "API Specification ${API_TAG} at ${TIMESTAMP}."
+        git push origin HEAD:master 
     elif [ "$GIT_TAG" != "$POD_TAG" -a "$GIT_TAG" != "$API_TAG" ]; then
         echo "Drop tag to ${API_TAG}"
         #git remote set-url origin https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin.git
