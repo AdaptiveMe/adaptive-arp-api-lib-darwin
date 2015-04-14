@@ -43,8 +43,8 @@ after_success: |-
         echo Pod: $POD_TAG
         
         git remote set-url origin https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin.git
-        git add -u
-        git commit -m "API Specification ${API_TAG} at ${TIMESTAMP}."
+        #git add -u
+        git commit -am "API Specification ${API_TAG} at ${TIMESTAMP}."
         git push origin HEAD:master
     elif [ "$GIT_TAG" != "$POD_TAG" -a "$GIT_TAG" != "$API_TAG" ]; then
         echo "Drop tag to ${API_TAG}"
