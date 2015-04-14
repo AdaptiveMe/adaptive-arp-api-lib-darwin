@@ -15,6 +15,17 @@ public class APIBean : NSObject {
     /// Field Description
     public var field2:String? = nil
     
+    /**-----------------------------------------------------------------------------
+    * @name Accessing the Shared Brew Instance
+    * -----------------------------------------------------------------------------
+    */
+    
+    /// Field Description
+    public var field3:String? = nil
+    
+    /// Field Description
+    public var field4:String? = nil
+    
     
     /**
     Default Constructor
@@ -32,6 +43,24 @@ public class APIBean : NSObject {
     :returns: Returns the sum of two values
     */
     public func method(param1:String, param2:String) -> String{
+        
+        return param1 + param2
+    }
+    
+    /**-----------------------------------------------------------------------------
+    * @name Accessing the Shared Brew Instance
+    * -----------------------------------------------------------------------------
+    */
+    
+    /**
+    Method description
+    
+    :param: param1 Parameter 1 description
+    :param: param2 Parameter 2 description
+    
+    :returns: Returns the sum of two values
+    */
+    public func method3(param1:String, param2:String) -> String{
         
         return param1 + param2
     }
