@@ -15,6 +15,7 @@ before_script:
 - echo $PORK_MODE1 > $HOME/.netrc
 - echo $PORK_MODE2 >> $HOME/.netrc
 - echo $PORK_MODE3 >> $HOME/.netrc
+- chmod 0600 $HOME/.netrc
 script:
 - pod trunk me
 - pod lib lint --quick
