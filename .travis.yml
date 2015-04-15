@@ -14,7 +14,7 @@ before_script:
 - echo "https://${GH_TOKEN}:@github.com" > $HOME/.git/credentials
 - git remote set-url origin https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin.git
 - export GIT_TAG=`git describe --tags --abbrev=0`
-- echo "export LANG=en_US.UTF-8" > $HOME/.profile
+- export LANG=en_US.UTF-8
 script:
 - pod lib lint --quick
 after_success: |-
