@@ -50,6 +50,7 @@ after_success: |-
         git status
         git commit -v -m "API Specification ${API_TAG} at ${TIMESTAMP}."
         git status
+        git --version
         git push -v origin
     elif [ "$GIT_TAG" != "$POD_TAG" -a "$GIT_TAG" != "$API_TAG" ]; then
         echo "Drop tag to ${API_TAG}"
