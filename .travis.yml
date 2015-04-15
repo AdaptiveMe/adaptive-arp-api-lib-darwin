@@ -46,7 +46,7 @@ after_success: |-
         git clone https://github.com/AdaptiveMe/adaptive-arp-api-lib-darwin.git
         cd adaptive-arp-api-lib-darwin
         podspec-bump -i $API_TAG -w      
-        git add -u
+        git add -A .
         git status
         git commit -v -m "API Specification ${API_TAG} at ${TIMESTAMP}."
         git status
