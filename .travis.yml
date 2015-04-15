@@ -39,8 +39,7 @@ after_success: |-
         echo "Bump version here to ${API_TAG}"
         git checkout master
         npm install -g podspec-bump
-        podspec-bump -i $API_TAG -w 
-        git stash -u       
+        podspec-bump -i $API_TAG -w      
         git add -u
         git commit -m "API Specification ${API_TAG} at ${TIMESTAMP}."
         git push origin
