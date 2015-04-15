@@ -33,6 +33,7 @@ DerivedData
 
 .cocoapods/
 .git/
+.gitconfig
 .netrc
 node_modules/
 .npm/
