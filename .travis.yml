@@ -40,7 +40,7 @@ after_success: |-
         ls -lart
         cat $HOME/.gitconfig
         cat $HOME/.git/credentials
-        git checkout -v master
+        git checkout master
         git pull -v
         npm install -g podspec-bump
         podspec-bump -i $API_TAG -w      

@@ -35,3 +35,4 @@ DerivedData
 .git/
 .netrc
 node_modules/
+.npm/
