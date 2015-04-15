@@ -38,13 +38,17 @@ after_success: |-
     if [ "$GIT_TAG" == "$POD_TAG" -a "$GIT_TAG" != "$API_TAG" ]; then
         echo "Bump version here to ${API_TAG}"
         ls -lart
-        git checkout master
-        git pull
+        cat $HOME/.gitconfig
+        cat $HOME/.git/credentials
+        git checkout -v master
+        git pull -v
         npm install -g podspec-bump
         podspec-bump -i $API_TAG -w      
         git add -u
-        git commit -m "API Specification ${API_TAG} at ${TIMESTAMP}."
-        git push origin
+        git status
+        git commit -v -m "API Specification ${API_TAG} at ${TIMESTAMP}."
+        git status
+        git push -v origin
     elif [ "$GIT_TAG" != "$POD_TAG" -a "$GIT_TAG" != "$API_TAG" ]; then
         echo "Drop tag to ${API_TAG}"
         git tag -a "${API_TAG}" -m "API Specification ${API_TAG}"
