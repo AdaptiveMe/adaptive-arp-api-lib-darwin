@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.10
+    * @version v2.2.11
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -71,7 +71,7 @@ public class BaseListenerImpl : IBaseListener {
        Return the API version for the given interface.
     */
     public final func getAPIVersion() -> String? {
-        return "v2.2.10"
+        return "v2.2.11"
     }
 
     /**

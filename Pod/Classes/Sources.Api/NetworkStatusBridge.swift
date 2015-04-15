@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.10
+    * @version v2.2.11
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -175,7 +175,7 @@ public class NetworkStatusBridge : BaseCommunicationBridge, INetworkStatus, APIB
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "NetworkStatusBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.10."
+                responseMessage = "NetworkStatusBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.11."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

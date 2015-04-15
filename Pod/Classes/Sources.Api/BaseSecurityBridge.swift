@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.10
+    * @version v2.2.11
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -63,7 +63,7 @@ public class BaseSecurityBridge : IBaseSecurity {
        Return the API version for the given interface.
     */
     public final func getAPIVersion() -> String? {
-        return "v2.2.10"
+        return "v2.2.11"
     }
 
     /**
@@ -81,7 +81,7 @@ public class BaseSecurityBridge : IBaseSecurity {
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "BaseSecurityBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.10."
+                responseMessage = "BaseSecurityBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.11."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)
