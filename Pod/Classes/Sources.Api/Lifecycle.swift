@@ -129,8 +129,8 @@ Possible lifecycle States:
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> Lifecycle {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> Lifecycle {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -156,7 +156,7 @@ Possible lifecycle States:
             return resultObject
         }
 
-        static func toJSON(object: Lifecycle) -> String {
+        public static func toJSON(object: Lifecycle) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

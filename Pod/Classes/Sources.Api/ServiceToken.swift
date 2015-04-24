@@ -173,8 +173,8 @@ to a relative path of a function published on a remote service.
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> ServiceToken {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> ServiceToken {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -211,7 +211,7 @@ to a relative path of a function published on a remote service.
             return resultObject
         }
 
-        static func toJSON(object: ServiceToken) -> String {
+        public static func toJSON(object: ServiceToken) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

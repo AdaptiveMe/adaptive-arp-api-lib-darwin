@@ -262,8 +262,8 @@ public class ServiceSessionCookie : APIBean {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> ServiceSessionCookie {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> ServiceSessionCookie {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -326,7 +326,7 @@ public class ServiceSessionCookie : APIBean {
             return resultObject
         }
 
-        static func toJSON(object: ServiceSessionCookie) -> String {
+        public static func toJSON(object: ServiceSessionCookie) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

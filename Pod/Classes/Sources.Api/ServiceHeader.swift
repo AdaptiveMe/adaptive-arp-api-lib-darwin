@@ -68,8 +68,8 @@ public class ServiceHeader : KeyValue {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> ServiceHeader {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> ServiceHeader {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -94,7 +94,7 @@ public class ServiceHeader : KeyValue {
             return resultObject
         }
 
-        static func toJSON(object: ServiceHeader) -> String {
+        public static func toJSON(object: ServiceHeader) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

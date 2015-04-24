@@ -56,8 +56,8 @@ public class APIBean {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> APIBean {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> APIBean {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -70,7 +70,7 @@ public class APIBean {
             return resultObject
         }
 
-        static func toJSON(object: APIBean) -> String {
+        public static func toJSON(object: APIBean) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

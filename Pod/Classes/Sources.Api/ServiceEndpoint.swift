@@ -142,8 +142,8 @@ public class ServiceEndpoint : APIBean {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> ServiceEndpoint {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> ServiceEndpoint {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -178,7 +178,7 @@ public class ServiceEndpoint : APIBean {
             return resultObject
         }
 
-        static func toJSON(object: ServiceEndpoint) -> String {
+        public static func toJSON(object: ServiceEndpoint) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

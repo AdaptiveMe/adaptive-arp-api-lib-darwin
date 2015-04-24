@@ -144,8 +144,8 @@ public class ContactProfessionalInfo : APIBean {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> ContactProfessionalInfo {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> ContactProfessionalInfo {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -176,7 +176,7 @@ public class ContactProfessionalInfo : APIBean {
             return resultObject
         }
 
-        static func toJSON(object: ContactProfessionalInfo) -> String {
+        public static func toJSON(object: ContactProfessionalInfo) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

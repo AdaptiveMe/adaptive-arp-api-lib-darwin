@@ -207,8 +207,8 @@ public class DatabaseTable : APIBean {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> DatabaseTable {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> DatabaseTable {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -261,7 +261,7 @@ public class DatabaseTable : APIBean {
             return resultObject
         }
 
-        static func toJSON(object: DatabaseTable) -> String {
+        public static func toJSON(object: DatabaseTable) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

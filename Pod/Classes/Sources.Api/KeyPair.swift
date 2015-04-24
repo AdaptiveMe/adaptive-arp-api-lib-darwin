@@ -118,8 +118,8 @@ public class KeyPair : APIBean {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> KeyPair {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> KeyPair {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -144,7 +144,7 @@ public class KeyPair : APIBean {
             return resultObject
         }
 
-        static func toJSON(object: KeyPair) -> String {
+        public static func toJSON(object: KeyPair) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

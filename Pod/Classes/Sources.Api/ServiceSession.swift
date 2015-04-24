@@ -118,8 +118,8 @@ public class ServiceSession : APIBean {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> ServiceSession {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> ServiceSession {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -152,7 +152,7 @@ public class ServiceSession : APIBean {
             return resultObject
         }
 
-        static func toJSON(object: ServiceSession) -> String {
+        public static func toJSON(object: ServiceSession) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

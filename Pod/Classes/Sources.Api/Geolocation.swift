@@ -233,8 +233,8 @@ public class Geolocation : APIBean {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> Geolocation {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> Geolocation {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -284,7 +284,7 @@ public class Geolocation : APIBean {
             return resultObject
         }
 
-        static func toJSON(object: Geolocation) -> String {
+        public static func toJSON(object: Geolocation) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

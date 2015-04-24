@@ -176,8 +176,8 @@ concluded.
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> RotationEvent {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> RotationEvent {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -215,7 +215,7 @@ concluded.
             return resultObject
         }
 
-        static func toJSON(object: RotationEvent) -> String {
+        public static func toJSON(object: RotationEvent) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

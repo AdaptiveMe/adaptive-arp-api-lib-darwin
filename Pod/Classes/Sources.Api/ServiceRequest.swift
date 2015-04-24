@@ -346,8 +346,8 @@ identifiers. This should not be manipulated by the application directly.
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> ServiceRequest {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> ServiceRequest {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -439,7 +439,7 @@ identifiers. This should not be manipulated by the application directly.
             return resultObject
         }
 
-        static func toJSON(object: ServiceRequest) -> String {
+        public static func toJSON(object: ServiceRequest) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

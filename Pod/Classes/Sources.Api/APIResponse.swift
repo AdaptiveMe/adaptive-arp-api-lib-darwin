@@ -148,8 +148,8 @@ public class APIResponse {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> APIResponse {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> APIResponse {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -181,7 +181,7 @@ public class APIResponse {
             return resultObject
         }
 
-        static func toJSON(object: APIResponse) -> String {
+        public static func toJSON(object: APIResponse) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

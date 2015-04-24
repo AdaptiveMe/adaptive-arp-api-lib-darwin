@@ -176,8 +176,8 @@ doesn't exist, this will be -1. Used internally.
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> FileDescriptor {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> FileDescriptor {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -229,7 +229,7 @@ doesn't exist, this will be -1. Used internally.
             return resultObject
         }
 
-        static func toJSON(object: FileDescriptor) -> String {
+        public static func toJSON(object: FileDescriptor) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

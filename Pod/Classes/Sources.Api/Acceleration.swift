@@ -170,8 +170,8 @@ public class Acceleration : APIBean {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> Acceleration {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> Acceleration {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -209,7 +209,7 @@ public class Acceleration : APIBean {
             return resultObject
         }
 
-        static func toJSON(object: Acceleration) -> String {
+        public static func toJSON(object: Acceleration) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

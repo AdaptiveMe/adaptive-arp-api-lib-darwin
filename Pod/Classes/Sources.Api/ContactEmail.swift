@@ -144,8 +144,8 @@ public class ContactEmail : APIBean {
     /**
        JSON Serialization and deserialization support.
     */
-    struct Serializer {
-        static func fromJSON(json : String) -> ContactEmail {
+    public struct Serializer {
+        public static func fromJSON(json : String) -> ContactEmail {
             var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
             var jsonError: NSError?
             let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
@@ -176,7 +176,7 @@ public class ContactEmail : APIBean {
             return resultObject
         }
 
-        static func toJSON(object: ContactEmail) -> String {
+        public static func toJSON(object: ContactEmail) -> String {
             var jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")

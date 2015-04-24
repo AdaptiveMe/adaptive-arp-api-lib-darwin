@@ -81,12 +81,7 @@ public class AppRegistryBridge : IAppRegistry {
     /**
        Singleton instance.
     */
-    class var sharedInstance : AppRegistryBridge {
-        struct Static {
-            static let instance : AppRegistryBridge = AppRegistryBridge(delegate: AppRegistryDelegate())
-        }
-        return Static.instance
-    }
+    public static let sharedInstance : AppRegistryBridge = AppRegistryBridge(delegate: AppRegistryDelegate())
 
     /**
        Returns a reference to the registered AccelerationBridge.
