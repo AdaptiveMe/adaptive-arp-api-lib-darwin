@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.11
+    * @version v2.2.12
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -63,7 +63,7 @@ public class BaseMediaBridge : IBaseMedia {
        Return the API version for the given interface.
     */
     public final func getAPIVersion() -> String? {
-        return "v2.2.11"
+        return "v2.2.12"
     }
 
     /**
@@ -81,7 +81,7 @@ public class BaseMediaBridge : IBaseMedia {
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "BaseMediaBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.11."
+                responseMessage = "BaseMediaBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.12."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

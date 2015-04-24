@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.11
+    * @version v2.2.12
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -1188,7 +1188,7 @@ public class AppRegistryDelegate : IAppRegistry {
        Method that returns the API version of the implementation.
     */
     public func getAPIVersion() -> String? {
-        return "v2.2.11"
+        return "v2.2.12"
     }
 
     /**
