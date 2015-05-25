@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.12
+    * @version v2.2.13
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -63,7 +63,7 @@ public class BaseSensorBridge : IBaseSensor {
        Return the API version for the given interface.
     */
     public final func getAPIVersion() -> String? {
-        return "v2.2.12"
+        return "v2.2.13"
     }
 
     /**
@@ -81,7 +81,7 @@ public class BaseSensorBridge : IBaseSensor {
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "BaseSensorBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.12."
+                responseMessage = "BaseSensorBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.13."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)
