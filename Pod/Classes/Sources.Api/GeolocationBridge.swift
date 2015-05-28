@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.13
+    * @version v2.2.14
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -175,7 +175,7 @@ public class GeolocationBridge : BaseSensorBridge, IGeolocation, APIBridge {
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "GeolocationBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.13."
+                responseMessage = "GeolocationBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)
