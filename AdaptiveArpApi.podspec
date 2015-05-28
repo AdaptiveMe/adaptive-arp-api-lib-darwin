@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "AdaptiveArpApi"
-  s.version          = "2.2.13"
+  s.version          = "2.2.14"
   s.summary          = "The Adaptive Runtime Platform (ARP) provides native “containers” for Hybrid Apps. This is the API all platforms must adhere to."
   s.description      = <<-DESC
                        The Adaptive Runtime Platform (ARP) provides these native “containers” for the main mobile and desktop platforms so that Hybrid apps can be compiled and deployed on a multiplicity of devices leveraging the same code developed using modern web technologies. This project represents the APIs to be supported on the given language domain.
