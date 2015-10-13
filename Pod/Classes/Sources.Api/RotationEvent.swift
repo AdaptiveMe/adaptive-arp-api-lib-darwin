@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -178,14 +178,13 @@ concluded.
     */
     public struct Serializer {
         public static func fromJSON(json : String) -> RotationEvent {
-            var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
-            var jsonError: NSError?
-            let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
-            return fromDictionary(dict)
+            let data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+            let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            return fromDictionary(dict!)
         }
 
         static func fromDictionary(dict : NSDictionary) -> RotationEvent {
-            var resultObject : RotationEvent = RotationEvent()
+            let resultObject : RotationEvent = RotationEvent()
 
             if let value : AnyObject = dict.objectForKey("destination") {
                 if "\(value)" as NSString != "<null>" {
@@ -207,7 +206,7 @@ concluded.
 
             if let value : AnyObject = dict.objectForKey("timestamp") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as? NSNumber
+                    let numValue = value as? NSNumber
                     resultObject.timestamp = numValue?.longLongValue
                 }
             }
@@ -216,7 +215,7 @@ concluded.
         }
 
         public static func toJSON(object: RotationEvent) -> String {
-            var jsonString : NSMutableString = NSMutableString()
+            let jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")
 

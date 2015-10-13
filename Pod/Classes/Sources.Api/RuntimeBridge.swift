@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -76,8 +76,8 @@ public class RuntimeBridge : BaseSystemBridge, IRuntime, APIBridge {
     */
     public func dismissApplication() {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "RuntimeBridge executing dismissApplication...")
@@ -104,8 +104,8 @@ public class RuntimeBridge : BaseSystemBridge, IRuntime, APIBridge {
     */
     public func dismissSplashScreen() -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "RuntimeBridge executing dismissSplashScreen...")
@@ -132,7 +132,7 @@ public class RuntimeBridge : BaseSystemBridge, IRuntime, APIBridge {
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
@@ -140,7 +140,7 @@ public class RuntimeBridge : BaseSystemBridge, IRuntime, APIBridge {
             case "dismissApplication":
                 self.dismissApplication();
             case "dismissSplashScreen":
-                var response1 : Bool? = self.dismissSplashScreen()
+                let response1 : Bool? = self.dismissSplashScreen()
                 if let response1 = response1 {
                     responseJSON = "\(response1)"
                  } else {
@@ -149,7 +149,7 @@ public class RuntimeBridge : BaseSystemBridge, IRuntime, APIBridge {
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "RuntimeBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "RuntimeBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

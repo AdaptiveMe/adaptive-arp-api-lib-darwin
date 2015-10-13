@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -56,7 +56,7 @@ public class FileResultCallbackImpl : BaseCallbackImpl, IFileResultCallback {
        @since v2.0
     */
     public func onError(error : IFileResultCallbackError) { 
-        var param0 : String = "Adaptive.IFileResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.IFileResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -71,7 +71,7 @@ public class FileResultCallbackImpl : BaseCallbackImpl, IFileResultCallback {
        @since v2.0
     */
     public func onResult(storageFile : FileDescriptor) { 
-        var param0 : String = "Adaptive.FileDescriptor.toObject(JSON.parse(\"\(JSONUtil.escapeString(FileDescriptor.Serializer.toJSON(storageFile)))\"))"
+        let param0 : String = "Adaptive.FileDescriptor.toObject(JSON.parse(\"\(JSONUtil.escapeString(FileDescriptor.Serializer.toJSON(storageFile)))\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -87,8 +87,8 @@ public class FileResultCallbackImpl : BaseCallbackImpl, IFileResultCallback {
        @since v2.0
     */
     public func onWarning(file : FileDescriptor, warning : IFileResultCallbackWarning) { 
-        var param0 : String = "Adaptive.FileDescriptor.toObject(JSON.parse(\"\(JSONUtil.escapeString(FileDescriptor.Serializer.toJSON(file)))\"))"
-        var param1 : String = "Adaptive.IFileResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.FileDescriptor.toObject(JSON.parse(\"\(JSONUtil.escapeString(FileDescriptor.Serializer.toJSON(file)))\"))"
+        let param1 : String = "Adaptive.IFileResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!

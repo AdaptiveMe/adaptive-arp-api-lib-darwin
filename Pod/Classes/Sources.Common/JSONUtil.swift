@@ -49,23 +49,24 @@ public struct JSONUtil {
     }
     
     public static func stringElementToArray(string : String) -> [String] {
-        var theResult : [String] = [String]()
+        //var theResult : [String] = [String]()
         var theString : NSString = string
         theString = theString.substringFromIndex(1)
         theString = theString.substringToIndex(theString.length-1)
-        var theStringArr = split(theString as String) {$0 == ","}
-        for quotedString in theStringArr {
-            var unquotedString : NSString = quotedString
+        let theStringArr = (theString as String).characters.split{$0 == ","}.map(String.init)
+        return theStringArr
+        //for quotedString in theStringArr {
+            //let unquotedString : NSString = quotedString
             //unquotedString = unquotedString.substringFromIndex(1)
             //unquotedString = unquotedString.substringToIndex(unquotedString.length - 1)
-            theResult.append(unquotedString as String)
-        }
-        return theResult
+            //theResult.append(unquotedString as String)
+        //}
+        //return theResult
     }
     
     public static func dictionifyJSON(string : String) -> NSDictionary {
-        var data:NSData = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
-        var error: NSError?
-        return NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as! NSDictionary
+        let data:NSData = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+        let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+        return dict!
     }
 }

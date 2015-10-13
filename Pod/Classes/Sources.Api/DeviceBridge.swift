@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -77,8 +77,8 @@ public class DeviceBridge : BaseSystemBridge, IDevice, APIBridge {
     */
     public func addButtonListener(listener : IButtonListener ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DeviceBridge executing addButtonListener...")
@@ -105,8 +105,8 @@ public class DeviceBridge : BaseSystemBridge, IDevice, APIBridge {
     */
     public func addDeviceOrientationListener(listener : IDeviceOrientationListener ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DeviceBridge executing addDeviceOrientationListener...")
@@ -133,8 +133,8 @@ public class DeviceBridge : BaseSystemBridge, IDevice, APIBridge {
     */
     public func getDeviceInfo() -> DeviceInfo? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DeviceBridge executing getDeviceInfo...")
@@ -162,8 +162,8 @@ public class DeviceBridge : BaseSystemBridge, IDevice, APIBridge {
     */
     public func getLocaleCurrent() -> Locale? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DeviceBridge executing getLocaleCurrent...")
@@ -192,8 +192,8 @@ of the display. For display orientation, use the IDisplay APIs.
     */
     public func getOrientationCurrent() -> ICapabilitiesOrientation? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DeviceBridge executing getOrientationCurrent...")
@@ -221,8 +221,8 @@ of the display. For display orientation, use the IDisplay APIs.
     */
     public func removeButtonListener(listener : IButtonListener ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DeviceBridge executing removeButtonListener...")
@@ -248,8 +248,8 @@ of the display. For display orientation, use the IDisplay APIs.
     */
     public func removeButtonListeners() {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DeviceBridge executing removeButtonListeners...")
@@ -276,8 +276,8 @@ of the display. For display orientation, use the IDisplay APIs.
     */
     public func removeDeviceOrientationListener(listener : IDeviceOrientationListener ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DeviceBridge executing removeDeviceOrientationListener...")
@@ -303,8 +303,8 @@ of the display. For display orientation, use the IDisplay APIs.
     */
     public func removeDeviceOrientationListeners() {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DeviceBridge executing removeDeviceOrientationListeners...")
@@ -330,52 +330,52 @@ of the display. For display orientation, use the IDisplay APIs.
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "addButtonListener":
-                var listener0 : IButtonListener? =  ButtonListenerImpl(id: request.getAsyncId()!)
+                let listener0 : IButtonListener? =  ButtonListenerImpl(id: request.getAsyncId()!)
                 self.addButtonListener(listener0!);
             case "addDeviceOrientationListener":
-                var listener1 : IDeviceOrientationListener? =  DeviceOrientationListenerImpl(id: request.getAsyncId()!)
+                let listener1 : IDeviceOrientationListener? =  DeviceOrientationListenerImpl(id: request.getAsyncId()!)
                 self.addDeviceOrientationListener(listener1!);
             case "getDeviceInfo":
-                var response2 : DeviceInfo? = self.getDeviceInfo()
+                let response2 : DeviceInfo? = self.getDeviceInfo()
                 if let response2 = response2 {
                     responseJSON = DeviceInfo.Serializer.toJSON(response2)
                 } else {
                     responseJSON = "null"
                 }
             case "getLocaleCurrent":
-                var response3 : Locale? = self.getLocaleCurrent()
+                let response3 : Locale? = self.getLocaleCurrent()
                 if let response3 = response3 {
                     responseJSON = Locale.Serializer.toJSON(response3)
                 } else {
                     responseJSON = "null"
                 }
             case "getOrientationCurrent":
-                var response4 : ICapabilitiesOrientation? = self.getOrientationCurrent()
+                let response4 : ICapabilitiesOrientation? = self.getOrientationCurrent()
                 if let response4 = response4 {
                     responseJSON = "{ \"value\": \"\(response4.toString())\" }"
                 } else {
                     responseJSON = "{ \"value\": \"Unknown\" }"
                 }
             case "removeButtonListener":
-                var listener5 : IButtonListener? =  ButtonListenerImpl(id: request.getAsyncId()!)
+                let listener5 : IButtonListener? =  ButtonListenerImpl(id: request.getAsyncId()!)
                 self.removeButtonListener(listener5!);
             case "removeButtonListeners":
                 self.removeButtonListeners();
             case "removeDeviceOrientationListener":
-                var listener7 : IDeviceOrientationListener? =  DeviceOrientationListenerImpl(id: request.getAsyncId()!)
+                let listener7 : IDeviceOrientationListener? =  DeviceOrientationListenerImpl(id: request.getAsyncId()!)
                 self.removeDeviceOrientationListener(listener7!);
             case "removeDeviceOrientationListeners":
                 self.removeDeviceOrientationListeners();
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "DeviceBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "DeviceBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

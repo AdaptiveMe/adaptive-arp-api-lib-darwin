@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -56,7 +56,7 @@ public class DatabaseResultCallbackImpl : BaseCallbackImpl, IDatabaseResultCallb
        @since v2.0
     */
     public func onError(error : IDatabaseResultCallbackError) { 
-        var param0 : String = "Adaptive.IDatabaseResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.IDatabaseResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -71,7 +71,7 @@ public class DatabaseResultCallbackImpl : BaseCallbackImpl, IDatabaseResultCallb
        @since v2.0
     */
     public func onResult(database : Database) { 
-        var param0 : String = "Adaptive.Database.toObject(JSON.parse(\"\(JSONUtil.escapeString(Database.Serializer.toJSON(database)))\"))"
+        let param0 : String = "Adaptive.Database.toObject(JSON.parse(\"\(JSONUtil.escapeString(Database.Serializer.toJSON(database)))\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -87,8 +87,8 @@ public class DatabaseResultCallbackImpl : BaseCallbackImpl, IDatabaseResultCallb
        @since v2.0
     */
     public func onWarning(database : Database, warning : IDatabaseResultCallbackWarning) { 
-        var param0 : String = "Adaptive.Database.toObject(JSON.parse(\"\(JSONUtil.escapeString(Database.Serializer.toJSON(database)))\"))"
-        var param1 : String = "Adaptive.IDatabaseResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.Database.toObject(JSON.parse(\"\(JSONUtil.escapeString(Database.Serializer.toJSON(database)))\"))"
+        let param1 : String = "Adaptive.IDatabaseResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!

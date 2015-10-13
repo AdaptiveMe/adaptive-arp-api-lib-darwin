@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -56,7 +56,7 @@ public class NetworkReachabilityCallbackImpl : BaseCallbackImpl, INetworkReachab
        @since v2.0
     */
     public func onError(error : INetworkReachabilityCallbackError) { 
-        var param0 : String = "Adaptive.INetworkReachabilityCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.INetworkReachabilityCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -71,7 +71,7 @@ public class NetworkReachabilityCallbackImpl : BaseCallbackImpl, INetworkReachab
        @since v2.0
     */
     public func onResult(reachable : Bool) { 
-        var param0 : String = "\(reachable)"
+        let param0 : String = "\(reachable)"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -87,8 +87,8 @@ public class NetworkReachabilityCallbackImpl : BaseCallbackImpl, INetworkReachab
        @since v2.0
     */
     public func onWarning(reachable : Bool, warning : INetworkReachabilityCallbackWarning) { 
-        var param0 : String = "\(reachable)"
-        var param1 : String = "Adaptive.INetworkReachabilityCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = "\(reachable)"
+        let param1 : String = "Adaptive.INetworkReachabilityCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!

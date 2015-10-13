@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -251,14 +251,13 @@ after uncompressing and unencrypting.
     */
     public struct Serializer {
         public static func fromJSON(json : String) -> AppResourceData {
-            var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
-            var jsonError: NSError?
-            let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
-            return fromDictionary(dict)
+            let data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+            let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            return fromDictionary(dict!)
         }
 
         static func fromDictionary(dict : NSDictionary) -> AppResourceData {
-            var resultObject : AppResourceData = AppResourceData()
+            let resultObject : AppResourceData = AppResourceData()
 
             if let value : AnyObject = dict.objectForKey("cooked") {
                 if "\(value)" as NSString != "<null>" {
@@ -268,7 +267,7 @@ after uncompressing and unencrypting.
 
             if let value : AnyObject = dict.objectForKey("cookedLength") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as? NSNumber
+                    let numValue = value as? NSNumber
                     resultObject.cookedLength = numValue?.longLongValue
                 }
             }
@@ -282,7 +281,7 @@ after uncompressing and unencrypting.
             if let value : AnyObject = dict.objectForKey("data") {
                 if "\(value)" as NSString != "<null>" {
                     var data : [UInt8] = [UInt8](count: (value as! NSArray).count, repeatedValue: 0)
-                    var dataData : NSData = (value as! NSData)
+                    let dataData : NSData = (value as! NSData)
                     dataData.getBytes(&data, length: (value as! NSArray).count * sizeof(UInt8))
                     resultObject.data = data
                 }
@@ -296,7 +295,7 @@ after uncompressing and unencrypting.
 
             if let value : AnyObject = dict.objectForKey("rawLength") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as? NSNumber
+                    let numValue = value as? NSNumber
                     resultObject.rawLength = numValue?.longLongValue
                 }
             }
@@ -311,7 +310,7 @@ after uncompressing and unencrypting.
         }
 
         public static func toJSON(object: AppResourceData) -> String {
-            var jsonString : NSMutableString = NSMutableString()
+            let jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")
 

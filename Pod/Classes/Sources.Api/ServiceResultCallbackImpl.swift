@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -56,7 +56,7 @@ public class ServiceResultCallbackImpl : BaseCallbackImpl, IServiceResultCallbac
        @since v2.0
     */
     public func onError(error : IServiceResultCallbackError) { 
-        var param0 : String = "Adaptive.IServiceResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.IServiceResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -71,7 +71,7 @@ public class ServiceResultCallbackImpl : BaseCallbackImpl, IServiceResultCallbac
        @since v2.0
     */
     public func onResult(response : ServiceResponse) { 
-        var param0 : String = "Adaptive.ServiceResponse.toObject(JSON.parse(\"\(JSONUtil.escapeString(ServiceResponse.Serializer.toJSON(response)))\"))"
+        let param0 : String = "Adaptive.ServiceResponse.toObject(JSON.parse(\"\(JSONUtil.escapeString(ServiceResponse.Serializer.toJSON(response)))\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -87,8 +87,8 @@ public class ServiceResultCallbackImpl : BaseCallbackImpl, IServiceResultCallbac
        @since v2.0
     */
     public func onWarning(response : ServiceResponse, warning : IServiceResultCallbackWarning) { 
-        var param0 : String = "Adaptive.ServiceResponse.toObject(JSON.parse(\"\(JSONUtil.escapeString(ServiceResponse.Serializer.toJSON(response)))\"))"
-        var param1 : String = "Adaptive.IServiceResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.ServiceResponse.toObject(JSON.parse(\"\(JSONUtil.escapeString(ServiceResponse.Serializer.toJSON(response)))\"))"
+        let param1 : String = "Adaptive.IServiceResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!

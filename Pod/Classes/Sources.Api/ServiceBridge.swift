@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -81,8 +81,8 @@ manipulated as needed by the application before submitting the ServiceRequest vi
     */
     public func getServiceRequest(serviceToken : ServiceToken ) -> ServiceRequest? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ServiceBridge executing getServiceRequest...")
@@ -115,8 +115,8 @@ configured in the platform's XML service definition file.
     */
     public func getServiceToken(serviceName : String , endpointName : String , functionName : String , method : IServiceMethod ) -> ServiceToken? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ServiceBridge executing getServiceToken...")
@@ -148,8 +148,8 @@ configured in the platform's XML service definition file.
     */
     public func getServiceTokenByUri(uri : String ) -> ServiceToken? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ServiceBridge executing getServiceTokenByUri...")
@@ -177,8 +177,8 @@ configured in the platform's XML service definition file.
     */
     public func getServicesRegistered() -> [ServiceToken]? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ServiceBridge executing getServicesRegistered...")
@@ -207,8 +207,8 @@ configured in the platform's XML service definition file.
     */
     public func invokeService(serviceRequest : ServiceRequest , callback : IServiceResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ServiceBridge executing invokeService...")
@@ -240,8 +240,8 @@ XML service definition file.
     */
     public func isServiceRegistered(serviceName : String , endpointName : String , functionName : String , method : IServiceMethod ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ServiceBridge executing isServiceRegistered...")
@@ -268,44 +268,44 @@ XML service definition file.
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "getServiceRequest":
-                var serviceToken0 : ServiceToken? = ServiceToken.Serializer.fromJSON(request.getParameters()![0])
-                var response0 : ServiceRequest? = self.getServiceRequest(serviceToken0!)
+                let serviceToken0 : ServiceToken? = ServiceToken.Serializer.fromJSON(request.getParameters()![0])
+                let response0 : ServiceRequest? = self.getServiceRequest(serviceToken0!)
                 if let response0 = response0 {
                     responseJSON = ServiceRequest.Serializer.toJSON(response0)
                 } else {
                     responseJSON = "null"
                 }
             case "getServiceToken":
-                var serviceName1 : String? = JSONUtil.unescapeString(request.getParameters()![0])
-                var endpointName1 : String? = JSONUtil.unescapeString(request.getParameters()![1])
-                var functionName1 : String? = JSONUtil.unescapeString(request.getParameters()![2])
-                var method1 : IServiceMethod? = IServiceMethod.toEnum(JSONUtil.dictionifyJSON(request.getParameters()![3])["value"] as? String)
-                var response1 : ServiceToken? = self.getServiceToken(serviceName1!, endpointName: endpointName1!, functionName: functionName1!, method: method1!)
+                let serviceName1 : String? = JSONUtil.unescapeString(request.getParameters()![0])
+                let endpointName1 : String? = JSONUtil.unescapeString(request.getParameters()![1])
+                let functionName1 : String? = JSONUtil.unescapeString(request.getParameters()![2])
+                let method1 : IServiceMethod? = IServiceMethod.toEnum(JSONUtil.dictionifyJSON(request.getParameters()![3])["value"] as? String)
+                let response1 : ServiceToken? = self.getServiceToken(serviceName1!, endpointName: endpointName1!, functionName: functionName1!, method: method1!)
                 if let response1 = response1 {
                     responseJSON = ServiceToken.Serializer.toJSON(response1)
                 } else {
                     responseJSON = "null"
                 }
             case "getServiceTokenByUri":
-                var uri2 : String? = JSONUtil.unescapeString(request.getParameters()![0])
-                var response2 : ServiceToken? = self.getServiceTokenByUri(uri2!)
+                let uri2 : String? = JSONUtil.unescapeString(request.getParameters()![0])
+                let response2 : ServiceToken? = self.getServiceTokenByUri(uri2!)
                 if let response2 = response2 {
                     responseJSON = ServiceToken.Serializer.toJSON(response2)
                 } else {
                     responseJSON = "null"
                 }
             case "getServicesRegistered":
-                var response3 : [ServiceToken]? = self.getServicesRegistered()
+                let response3 : [ServiceToken]? = self.getServicesRegistered()
                 if let response3 = response3 {
-                    var response3JSONArray : NSMutableString = NSMutableString()
+                    let response3JSONArray : NSMutableString = NSMutableString()
                     response3JSONArray.appendString("[ ")
-                    for (index, obj) in enumerate(response3) {
+                    for (index, obj) in response3.enumerate() {
                         response3JSONArray.appendString(ServiceToken.Serializer.toJSON(obj))
                         if index < response3.count-1 {
                             response3JSONArray.appendString(", ")
@@ -317,15 +317,15 @@ XML service definition file.
                     responseJSON = "null"
                 }
             case "invokeService":
-                var serviceRequest4 : ServiceRequest? = ServiceRequest.Serializer.fromJSON(request.getParameters()![0])
-                var callback4 : IServiceResultCallback? =  ServiceResultCallbackImpl(id: request.getAsyncId()!)
+                let serviceRequest4 : ServiceRequest? = ServiceRequest.Serializer.fromJSON(request.getParameters()![0])
+                let callback4 : IServiceResultCallback? =  ServiceResultCallbackImpl(id: request.getAsyncId()!)
                 self.invokeService(serviceRequest4!, callback: callback4!);
             case "isServiceRegistered":
-                var serviceName5 : String? = JSONUtil.unescapeString(request.getParameters()![0])
-                var endpointName5 : String? = JSONUtil.unescapeString(request.getParameters()![1])
-                var functionName5 : String? = JSONUtil.unescapeString(request.getParameters()![2])
-                var method5 : IServiceMethod? = IServiceMethod.toEnum(JSONUtil.dictionifyJSON(request.getParameters()![3])["value"] as? String)
-                var response5 : Bool? = self.isServiceRegistered(serviceName5!, endpointName: endpointName5!, functionName: functionName5!, method: method5!)
+                let serviceName5 : String? = JSONUtil.unescapeString(request.getParameters()![0])
+                let endpointName5 : String? = JSONUtil.unescapeString(request.getParameters()![1])
+                let functionName5 : String? = JSONUtil.unescapeString(request.getParameters()![2])
+                let method5 : IServiceMethod? = IServiceMethod.toEnum(JSONUtil.dictionifyJSON(request.getParameters()![3])["value"] as? String)
+                let response5 : Bool? = self.isServiceRegistered(serviceName5!, endpointName: endpointName5!, functionName: functionName5!, method: method5!)
                 if let response5 = response5 {
                     responseJSON = "\(response5)"
                  } else {
@@ -334,7 +334,7 @@ XML service definition file.
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "ServiceBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "ServiceBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

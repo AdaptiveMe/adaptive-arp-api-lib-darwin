@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -80,8 +80,8 @@ This method does not create the actual file in the specified folder.
     */
     public func createFileDescriptor(parent : FileDescriptor , name : String ) -> FileDescriptor? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileSystemBridge executing createFileDescriptor...")
@@ -111,8 +111,8 @@ This path is volatile and may be cleaned by the OS periodically.
     */
     public func getApplicationCacheFolder() -> FileDescriptor? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileSystemBridge executing getApplicationCacheFolder...")
@@ -141,8 +141,8 @@ This path must always be writable by the current application.
     */
     public func getApplicationCloudFolder() -> FileDescriptor? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileSystemBridge executing getApplicationCloudFolder...")
@@ -171,8 +171,8 @@ This path must always be writable by the current application.
     */
     public func getApplicationDocumentsFolder() -> FileDescriptor? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileSystemBridge executing getApplicationDocumentsFolder...")
@@ -201,8 +201,8 @@ This path may or may not be directly readable or writable - it usually contains 
     */
     public func getApplicationFolder() -> FileDescriptor? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileSystemBridge executing getApplicationFolder...")
@@ -231,8 +231,8 @@ This path must always be writable by the current application.
     */
     public func getApplicationProtectedFolder() -> FileDescriptor? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileSystemBridge executing getApplicationProtectedFolder...")
@@ -260,8 +260,8 @@ This path must always be writable by the current application.
     */
     public func getSeparator() -> Character? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileSystemBridge executing getSeparator...")
@@ -292,8 +292,8 @@ This path may or may not be writable by the current application.
     */
     public func getSystemExternalFolder() -> FileDescriptor? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileSystemBridge executing getSystemExternalFolder...")
@@ -320,64 +320,64 @@ This path may or may not be writable by the current application.
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "createFileDescriptor":
-                var parent0 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var name0 : String? = JSONUtil.unescapeString(request.getParameters()![1])
-                var response0 : FileDescriptor? = self.createFileDescriptor(parent0!, name: name0!)
+                let parent0 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let name0 : String? = JSONUtil.unescapeString(request.getParameters()![1])
+                let response0 : FileDescriptor? = self.createFileDescriptor(parent0!, name: name0!)
                 if let response0 = response0 {
                     responseJSON = FileDescriptor.Serializer.toJSON(response0)
                 } else {
                     responseJSON = "null"
                 }
             case "getApplicationCacheFolder":
-                var response1 : FileDescriptor? = self.getApplicationCacheFolder()
+                let response1 : FileDescriptor? = self.getApplicationCacheFolder()
                 if let response1 = response1 {
                     responseJSON = FileDescriptor.Serializer.toJSON(response1)
                 } else {
                     responseJSON = "null"
                 }
             case "getApplicationCloudFolder":
-                var response2 : FileDescriptor? = self.getApplicationCloudFolder()
+                let response2 : FileDescriptor? = self.getApplicationCloudFolder()
                 if let response2 = response2 {
                     responseJSON = FileDescriptor.Serializer.toJSON(response2)
                 } else {
                     responseJSON = "null"
                 }
             case "getApplicationDocumentsFolder":
-                var response3 : FileDescriptor? = self.getApplicationDocumentsFolder()
+                let response3 : FileDescriptor? = self.getApplicationDocumentsFolder()
                 if let response3 = response3 {
                     responseJSON = FileDescriptor.Serializer.toJSON(response3)
                 } else {
                     responseJSON = "null"
                 }
             case "getApplicationFolder":
-                var response4 : FileDescriptor? = self.getApplicationFolder()
+                let response4 : FileDescriptor? = self.getApplicationFolder()
                 if let response4 = response4 {
                     responseJSON = FileDescriptor.Serializer.toJSON(response4)
                 } else {
                     responseJSON = "null"
                 }
             case "getApplicationProtectedFolder":
-                var response5 : FileDescriptor? = self.getApplicationProtectedFolder()
+                let response5 : FileDescriptor? = self.getApplicationProtectedFolder()
                 if let response5 = response5 {
                     responseJSON = FileDescriptor.Serializer.toJSON(response5)
                 } else {
                     responseJSON = "null"
                 }
             case "getSeparator":
-                var response6 : Character? = self.getSeparator()
+                let response6 : Character? = self.getSeparator()
                 if let response6 = response6 {
                     responseJSON = "\(response6)"
                  } else {
                     responseJSON = "null"
                  }
             case "getSystemExternalFolder":
-                var response7 : FileDescriptor? = self.getSystemExternalFolder()
+                let response7 : FileDescriptor? = self.getSystemExternalFolder()
                 if let response7 = response7 {
                     responseJSON = FileDescriptor.Serializer.toJSON(response7)
                 } else {
@@ -386,7 +386,7 @@ This path may or may not be writable by the current application.
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "FileSystemBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "FileSystemBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

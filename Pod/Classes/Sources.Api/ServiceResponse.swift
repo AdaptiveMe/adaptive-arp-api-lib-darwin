@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -251,14 +251,13 @@ should be encoded in base64.
     */
     public struct Serializer {
         public static func fromJSON(json : String) -> ServiceResponse {
-            var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
-            var jsonError: NSError?
-            let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
-            return fromDictionary(dict)
+            let data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+            let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            return fromDictionary(dict!)
         }
 
         static func fromDictionary(dict : NSDictionary) -> ServiceResponse {
-            var resultObject : ServiceResponse = ServiceResponse()
+            let resultObject : ServiceResponse = ServiceResponse()
 
             if let value : AnyObject = dict.objectForKey("content") {
                 if "\(value)" as NSString != "<null>" {
@@ -274,7 +273,7 @@ should be encoded in base64.
 
             if let value : AnyObject = dict.objectForKey("contentLength") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as! Int
+                    let numValue = value as! Int
                     resultObject.contentLength = Int32(numValue)
                 }
             }
@@ -303,7 +302,7 @@ should be encoded in base64.
 
             if let value : AnyObject = dict.objectForKey("statusCode") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as! Int
+                    let numValue = value as! Int
                     resultObject.statusCode = Int32(numValue)
                 }
             }
@@ -312,7 +311,7 @@ should be encoded in base64.
         }
 
         public static func toJSON(object: ServiceResponse) -> String {
-            var jsonString : NSMutableString = NSMutableString()
+            let jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")
 

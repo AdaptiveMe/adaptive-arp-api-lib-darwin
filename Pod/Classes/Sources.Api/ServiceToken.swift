@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -175,14 +175,13 @@ to a relative path of a function published on a remote service.
     */
     public struct Serializer {
         public static func fromJSON(json : String) -> ServiceToken {
-            var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
-            var jsonError: NSError?
-            let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
-            return fromDictionary(dict)
+            let data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+            let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            return fromDictionary(dict!)
         }
 
         static func fromDictionary(dict : NSDictionary) -> ServiceToken {
-            var resultObject : ServiceToken = ServiceToken()
+            let resultObject : ServiceToken = ServiceToken()
 
             if let value : AnyObject = dict.objectForKey("endpointName") {
                 if "\(value)" as NSString != "<null>" {
@@ -212,7 +211,7 @@ to a relative path of a function published on a remote service.
         }
 
         public static func toJSON(object: ServiceToken) -> String {
-            var jsonString : NSMutableString = NSMutableString()
+            let jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")
 

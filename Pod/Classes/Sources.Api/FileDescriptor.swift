@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -178,25 +178,24 @@ doesn't exist, this will be -1. Used internally.
     */
     public struct Serializer {
         public static func fromJSON(json : String) -> FileDescriptor {
-            var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
-            var jsonError: NSError?
-            let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
-            return fromDictionary(dict)
+            let data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+            let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            return fromDictionary(dict!)
         }
 
         static func fromDictionary(dict : NSDictionary) -> FileDescriptor {
-            var resultObject : FileDescriptor = FileDescriptor()
+            let resultObject : FileDescriptor = FileDescriptor()
 
             if let value : AnyObject = dict.objectForKey("dateCreated") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as? NSNumber
+                    let numValue = value as? NSNumber
                     resultObject.dateCreated = numValue?.longLongValue
                 }
             }
 
             if let value : AnyObject = dict.objectForKey("dateModified") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as? NSNumber
+                    let numValue = value as? NSNumber
                     resultObject.dateModified = numValue?.longLongValue
                 }
             }
@@ -221,7 +220,7 @@ doesn't exist, this will be -1. Used internally.
 
             if let value : AnyObject = dict.objectForKey("size") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as? NSNumber
+                    let numValue = value as? NSNumber
                     resultObject.size = numValue?.longLongValue
                 }
             }
@@ -230,7 +229,7 @@ doesn't exist, this will be -1. Used internally.
         }
 
         public static func toJSON(object: FileDescriptor) -> String {
-            var jsonString : NSMutableString = NSMutableString()
+            let jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")
 

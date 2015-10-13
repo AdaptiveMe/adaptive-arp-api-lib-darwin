@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -77,8 +77,8 @@ public class VideoBridge : BaseMediaBridge, IVideo, APIBridge {
     */
     public func playStream(url : String ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "VideoBridge executing playStream...")
@@ -104,18 +104,18 @@ public class VideoBridge : BaseMediaBridge, IVideo, APIBridge {
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
-        var responseJSON : String? = "null"
+        let responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "playStream":
-                var url0 : String? = JSONUtil.unescapeString(request.getParameters()![0])
+                let url0 : String? = JSONUtil.unescapeString(request.getParameters()![0])
                 self.playStream(url0!);
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "VideoBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "VideoBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

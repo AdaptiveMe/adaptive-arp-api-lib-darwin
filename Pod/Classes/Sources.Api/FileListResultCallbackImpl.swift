@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -56,7 +56,7 @@ public class FileListResultCallbackImpl : BaseCallbackImpl, IFileListResultCallb
        @since v2.0
     */
     public func onError(error : IFileListResultCallbackError) { 
-        var param0 : String = "Adaptive.IFileListResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.IFileListResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -71,16 +71,16 @@ public class FileListResultCallbackImpl : BaseCallbackImpl, IFileListResultCallb
        @since v2.0
     */
     public func onResult(files : [FileDescriptor]) { 
-        var param0Array : NSMutableString = NSMutableString()
+        let param0Array : NSMutableString = NSMutableString()
         param0Array.appendString("[")
-        for (index,obj) in enumerate(files) {
+        for (index,obj) in files.enumerate() {
             param0Array.appendString("Adaptive.FileDescriptor.toObject(JSON.parse(\"\(JSONUtil.escapeString(FileDescriptor.Serializer.toJSON(obj)))\"))")
             if index < files.count-1 {
                 param0Array.appendString(", ")
             }
         }
         param0Array.appendString("]")
-        var param0 : String = param0Array as String
+        let param0 : String = param0Array as String
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -96,17 +96,17 @@ public class FileListResultCallbackImpl : BaseCallbackImpl, IFileListResultCallb
        @since v2.0
     */
     public func onWarning(files : [FileDescriptor], warning : IFileListResultCallbackWarning) { 
-        var param0Array : NSMutableString = NSMutableString()
+        let param0Array : NSMutableString = NSMutableString()
         param0Array.appendString("[")
-        for (index,obj) in enumerate(files) {
+        for (index,obj) in files.enumerate() {
             param0Array.appendString("Adaptive.FileDescriptor.toObject(JSON.parse(\"\(JSONUtil.escapeString(FileDescriptor.Serializer.toJSON(obj)))\"))")
             if index < files.count-1 {
                 param0Array.appendString(", ")
             }
         }
         param0Array.appendString("]")
-        var param0 : String = param0Array as String
-        var param1 : String = "Adaptive.IFileListResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = param0Array as String
+        let param1 : String = "Adaptive.IFileListResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!

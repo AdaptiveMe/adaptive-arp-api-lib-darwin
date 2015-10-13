@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -198,19 +198,18 @@ public class EmailAttachmentData : APIBean {
     */
     public struct Serializer {
         public static func fromJSON(json : String) -> EmailAttachmentData {
-            var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
-            var jsonError: NSError?
-            let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
-            return fromDictionary(dict)
+            let data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+            let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            return fromDictionary(dict!)
         }
 
         static func fromDictionary(dict : NSDictionary) -> EmailAttachmentData {
-            var resultObject : EmailAttachmentData = EmailAttachmentData()
+            let resultObject : EmailAttachmentData = EmailAttachmentData()
 
             if let value : AnyObject = dict.objectForKey("data") {
                 if "\(value)" as NSString != "<null>" {
                     var data : [UInt8] = [UInt8](count: (value as! NSArray).count, repeatedValue: 0)
-                    var dataData : NSData = (value as! NSData)
+                    let dataData : NSData = (value as! NSData)
                     dataData.getBytes(&data, length: (value as! NSArray).count * sizeof(UInt8))
                     resultObject.data = data
                 }
@@ -236,7 +235,7 @@ public class EmailAttachmentData : APIBean {
 
             if let value : AnyObject = dict.objectForKey("size") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as? NSNumber
+                    let numValue = value as? NSNumber
                     resultObject.size = numValue?.longLongValue
                 }
             }
@@ -245,7 +244,7 @@ public class EmailAttachmentData : APIBean {
         }
 
         public static func toJSON(object: EmailAttachmentData) -> String {
-            var jsonString : NSMutableString = NSMutableString()
+            let jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")
 

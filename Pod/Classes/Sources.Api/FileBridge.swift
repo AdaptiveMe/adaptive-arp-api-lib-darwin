@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -78,8 +78,8 @@ public class FileBridge : BaseDataBridge, IFile, APIBridge {
     */
     public func canRead(descriptor : FileDescriptor ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing canRead...")
@@ -108,8 +108,8 @@ public class FileBridge : BaseDataBridge, IFile, APIBridge {
     */
     public func canWrite(descriptor : FileDescriptor ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing canWrite...")
@@ -138,8 +138,8 @@ public class FileBridge : BaseDataBridge, IFile, APIBridge {
     */
     public func create(descriptor : FileDescriptor , callback : IFileResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing create...")
@@ -169,8 +169,8 @@ deleted if the cascade parameter is set to true.
     */
     public func delete(descriptor : FileDescriptor , cascade : Bool ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing delete...")
@@ -199,8 +199,8 @@ deleted if the cascade parameter is set to true.
     */
     public func exists(descriptor : FileDescriptor ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing exists...")
@@ -229,8 +229,8 @@ deleted if the cascade parameter is set to true.
     */
     public func getContent(descriptor : FileDescriptor , callback : IFileDataLoadResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing getContent...")
@@ -258,8 +258,8 @@ deleted if the cascade parameter is set to true.
     */
     public func getFileStorageType(descriptor : FileDescriptor ) -> IFileSystemStorageType? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing getFileStorageType...")
@@ -288,8 +288,8 @@ deleted if the cascade parameter is set to true.
     */
     public func getFileType(descriptor : FileDescriptor ) -> IFileSystemType? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing getFileType...")
@@ -318,8 +318,8 @@ deleted if the cascade parameter is set to true.
     */
     public func getSecurityType(descriptor : FileDescriptor ) -> IFileSystemSecurity? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing getSecurityType...")
@@ -348,8 +348,8 @@ deleted if the cascade parameter is set to true.
     */
     public func isDirectory(descriptor : FileDescriptor ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing isDirectory...")
@@ -379,8 +379,8 @@ any results.
     */
     public func listFiles(descriptor : FileDescriptor , callback : IFileListResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing listFiles...")
@@ -410,8 +410,8 @@ is a file, it will not yield any results.
     */
     public func listFilesForRegex(descriptor : FileDescriptor , regex : String , callback : IFileListResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing listFilesForRegex...")
@@ -440,8 +440,8 @@ is a file, it will not yield any results.
     */
     public func mkDir(descriptor : FileDescriptor , recursive : Bool ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing mkDir...")
@@ -474,8 +474,8 @@ new destination file.
     */
     public func move(source : FileDescriptor , destination : FileDescriptor , createPath : Bool , overwrite : Bool , callback : IFileResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing move...")
@@ -504,8 +504,8 @@ new destination file.
     */
     public func setContent(descriptor : FileDescriptor , content : [UInt8] , callback : IFileDataStoreResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "FileBridge executing setContent...")
@@ -531,122 +531,122 @@ new destination file.
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "canRead":
-                var descriptor0 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var response0 : Bool? = self.canRead(descriptor0!)
+                let descriptor0 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let response0 : Bool? = self.canRead(descriptor0!)
                 if let response0 = response0 {
                     responseJSON = "\(response0)"
                  } else {
                     responseJSON = "false"
                  }
             case "canWrite":
-                var descriptor1 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var response1 : Bool? = self.canWrite(descriptor1!)
+                let descriptor1 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let response1 : Bool? = self.canWrite(descriptor1!)
                 if let response1 = response1 {
                     responseJSON = "\(response1)"
                  } else {
                     responseJSON = "false"
                  }
             case "create":
-                var descriptor2 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var callback2 : IFileResultCallback? =  FileResultCallbackImpl(id: request.getAsyncId()!)
+                let descriptor2 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let callback2 : IFileResultCallback? =  FileResultCallbackImpl(id: request.getAsyncId()!)
                 self.create(descriptor2!, callback: callback2!);
             case "delete":
-                var descriptor3 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var cascade3 : Bool? = (request.getParameters()![1] as NSString).boolValue
-                var response3 : Bool? = self.delete(descriptor3!, cascade: cascade3!)
+                let descriptor3 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let cascade3 : Bool? = (request.getParameters()![1] as NSString).boolValue
+                let response3 : Bool? = self.delete(descriptor3!, cascade: cascade3!)
                 if let response3 = response3 {
                     responseJSON = "\(response3)"
                  } else {
                     responseJSON = "false"
                  }
             case "exists":
-                var descriptor4 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var response4 : Bool? = self.exists(descriptor4!)
+                let descriptor4 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let response4 : Bool? = self.exists(descriptor4!)
                 if let response4 = response4 {
                     responseJSON = "\(response4)"
                  } else {
                     responseJSON = "false"
                  }
             case "getContent":
-                var descriptor5 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var callback5 : IFileDataLoadResultCallback? =  FileDataLoadResultCallbackImpl(id: request.getAsyncId()!)
+                let descriptor5 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let callback5 : IFileDataLoadResultCallback? =  FileDataLoadResultCallbackImpl(id: request.getAsyncId()!)
                 self.getContent(descriptor5!, callback: callback5!);
             case "getFileStorageType":
-                var descriptor6 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var response6 : IFileSystemStorageType? = self.getFileStorageType(descriptor6!)
+                let descriptor6 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let response6 : IFileSystemStorageType? = self.getFileStorageType(descriptor6!)
                 if let response6 = response6 {
                     responseJSON = "{ \"value\": \"\(response6.toString())\" }"
                 } else {
                     responseJSON = "{ \"value\": \"Unknown\" }"
                 }
             case "getFileType":
-                var descriptor7 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var response7 : IFileSystemType? = self.getFileType(descriptor7!)
+                let descriptor7 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let response7 : IFileSystemType? = self.getFileType(descriptor7!)
                 if let response7 = response7 {
                     responseJSON = "{ \"value\": \"\(response7.toString())\" }"
                 } else {
                     responseJSON = "{ \"value\": \"Unknown\" }"
                 }
             case "getSecurityType":
-                var descriptor8 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var response8 : IFileSystemSecurity? = self.getSecurityType(descriptor8!)
+                let descriptor8 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let response8 : IFileSystemSecurity? = self.getSecurityType(descriptor8!)
                 if let response8 = response8 {
                     responseJSON = "{ \"value\": \"\(response8.toString())\" }"
                 } else {
                     responseJSON = "{ \"value\": \"Unknown\" }"
                 }
             case "isDirectory":
-                var descriptor9 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var response9 : Bool? = self.isDirectory(descriptor9!)
+                let descriptor9 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let response9 : Bool? = self.isDirectory(descriptor9!)
                 if let response9 = response9 {
                     responseJSON = "\(response9)"
                  } else {
                     responseJSON = "false"
                  }
             case "listFiles":
-                var descriptor10 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var callback10 : IFileListResultCallback? =  FileListResultCallbackImpl(id: request.getAsyncId()!)
+                let descriptor10 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let callback10 : IFileListResultCallback? =  FileListResultCallbackImpl(id: request.getAsyncId()!)
                 self.listFiles(descriptor10!, callback: callback10!);
             case "listFilesForRegex":
-                var descriptor11 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var regex11 : String? = JSONUtil.unescapeString(request.getParameters()![1])
-                var callback11 : IFileListResultCallback? =  FileListResultCallbackImpl(id: request.getAsyncId()!)
+                let descriptor11 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let regex11 : String? = JSONUtil.unescapeString(request.getParameters()![1])
+                let callback11 : IFileListResultCallback? =  FileListResultCallbackImpl(id: request.getAsyncId()!)
                 self.listFilesForRegex(descriptor11!, regex: regex11!, callback: callback11!);
             case "mkDir":
-                var descriptor12 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var recursive12 : Bool? = (request.getParameters()![1] as NSString).boolValue
-                var response12 : Bool? = self.mkDir(descriptor12!, recursive: recursive12!)
+                let descriptor12 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let recursive12 : Bool? = (request.getParameters()![1] as NSString).boolValue
+                let response12 : Bool? = self.mkDir(descriptor12!, recursive: recursive12!)
                 if let response12 = response12 {
                     responseJSON = "\(response12)"
                  } else {
                     responseJSON = "false"
                  }
             case "move":
-                var source13 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
-                var destination13 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![1])
-                var createPath13 : Bool? = (request.getParameters()![2] as NSString).boolValue
-                var overwrite13 : Bool? = (request.getParameters()![3] as NSString).boolValue
-                var callback13 : IFileResultCallback? =  FileResultCallbackImpl(id: request.getAsyncId()!)
+                let source13 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let destination13 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![1])
+                let createPath13 : Bool? = (request.getParameters()![2] as NSString).boolValue
+                let overwrite13 : Bool? = (request.getParameters()![3] as NSString).boolValue
+                let callback13 : IFileResultCallback? =  FileResultCallbackImpl(id: request.getAsyncId()!)
                 self.move(source13!, destination: destination13!, createPath: createPath13!, overwrite: overwrite13!, callback: callback13!);
             case "setContent":
-                var descriptor14 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
+                let descriptor14 : FileDescriptor? = FileDescriptor.Serializer.fromJSON(request.getParameters()![0])
                 var content14 : [UInt8]? = [UInt8]()
-                var contentArray14 : [String] = JSONUtil.stringElementToArray(request.getParameters()![1])
+                let contentArray14 : [String] = JSONUtil.stringElementToArray(request.getParameters()![1])
                 for contentElement14 in contentArray14 {
                     content14!.append(UInt8((contentElement14 as NSString).intValue))
                 }
-                var callback14 : IFileDataStoreResultCallback? =  FileDataStoreResultCallbackImpl(id: request.getAsyncId()!)
+                let callback14 : IFileDataStoreResultCallback? =  FileDataStoreResultCallbackImpl(id: request.getAsyncId()!)
                 self.setContent(descriptor14!, content: content14!, callback: callback14!);
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "FileBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "FileBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

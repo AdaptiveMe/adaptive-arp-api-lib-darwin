@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -56,7 +56,7 @@ public class FileDataLoadResultCallbackImpl : BaseCallbackImpl, IFileDataLoadRes
        @since v2.0
     */
     public func onError(error : IFileDataLoadResultCallbackError) { 
-        var param0 : String = "Adaptive.IFileDataLoadResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.IFileDataLoadResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -71,16 +71,16 @@ public class FileDataLoadResultCallbackImpl : BaseCallbackImpl, IFileDataLoadRes
        @since v2.0
     */
     public func onResult(data : [UInt8]) { 
-        var param0Array : NSMutableString = NSMutableString()
+        let param0Array : NSMutableString = NSMutableString()
         param0Array.appendString("[")
-        for (index,obj) in enumerate(data) {
+        for (index,obj) in data.enumerate() {
             param0Array.appendString("\(obj.value)")
             if index < data.count-1 {
                 param0Array.appendString(", ")
             }
         }
         param0Array.appendString("]")
-        var param0 : String = param0Array as String
+        let param0 : String = param0Array as String
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -96,17 +96,17 @@ public class FileDataLoadResultCallbackImpl : BaseCallbackImpl, IFileDataLoadRes
        @since v2.0
     */
     public func onWarning(data : [UInt8], warning : IFileDataLoadResultCallbackWarning) { 
-        var param0Array : NSMutableString = NSMutableString()
+        let param0Array : NSMutableString = NSMutableString()
         param0Array.appendString("[")
-        for (index,obj) in enumerate(data) {
+        for (index,obj) in data.enumerate() {
             param0Array.appendString("\(obj.value)")
             if index < data.count-1 {
                 param0Array.appendString(", ")
             }
         }
         param0Array.appendString("]")
-        var param0 : String = param0Array as String
-        var param1 : String = "Adaptive.IFileDataLoadResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = param0Array as String
+        let param1 : String = "Adaptive.IFileDataLoadResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!

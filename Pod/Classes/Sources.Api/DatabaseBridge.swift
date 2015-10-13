@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -78,8 +78,8 @@ public class DatabaseBridge : BaseDataBridge, IDatabase, APIBridge {
     */
     public func createDatabase(database : Database , callback : IDatabaseResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DatabaseBridge executing createDatabase...")
@@ -108,8 +108,8 @@ public class DatabaseBridge : BaseDataBridge, IDatabase, APIBridge {
     */
     public func createTable(database : Database , databaseTable : DatabaseTable , callback : IDatabaseTableResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DatabaseBridge executing createTable...")
@@ -137,8 +137,8 @@ public class DatabaseBridge : BaseDataBridge, IDatabase, APIBridge {
     */
     public func deleteDatabase(database : Database , callback : IDatabaseResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DatabaseBridge executing deleteDatabase...")
@@ -167,8 +167,8 @@ public class DatabaseBridge : BaseDataBridge, IDatabase, APIBridge {
     */
     public func deleteTable(database : Database , databaseTable : DatabaseTable , callback : IDatabaseTableResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DatabaseBridge executing deleteTable...")
@@ -199,8 +199,8 @@ should be passed as a parameter
     */
     public func executeSqlStatement(database : Database , statement : String , replacements : [String] , callback : IDatabaseTableResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DatabaseBridge executing executeSqlStatement...")
@@ -231,8 +231,8 @@ should be passed as a parameter
     */
     public func executeSqlTransactions(database : Database , statements : [String] , rollbackFlag : Bool , callback : IDatabaseTableResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DatabaseBridge executing executeSqlTransactions...")
@@ -260,8 +260,8 @@ should be passed as a parameter
     */
     public func existsDatabase(database : Database ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DatabaseBridge executing existsDatabase...")
@@ -291,8 +291,8 @@ should be passed as a parameter
     */
     public func existsTable(database : Database , databaseTable : DatabaseTable ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DatabaseBridge executing existsTable...")
@@ -319,61 +319,61 @@ should be passed as a parameter
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "createDatabase":
-                var database0 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
-                var callback0 : IDatabaseResultCallback? =  DatabaseResultCallbackImpl(id: request.getAsyncId()!)
+                let database0 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
+                let callback0 : IDatabaseResultCallback? =  DatabaseResultCallbackImpl(id: request.getAsyncId()!)
                 self.createDatabase(database0!, callback: callback0!);
             case "createTable":
-                var database1 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
-                var databaseTable1 : DatabaseTable? = DatabaseTable.Serializer.fromJSON(request.getParameters()![1])
-                var callback1 : IDatabaseTableResultCallback? =  DatabaseTableResultCallbackImpl(id: request.getAsyncId()!)
+                let database1 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
+                let databaseTable1 : DatabaseTable? = DatabaseTable.Serializer.fromJSON(request.getParameters()![1])
+                let callback1 : IDatabaseTableResultCallback? =  DatabaseTableResultCallbackImpl(id: request.getAsyncId()!)
                 self.createTable(database1!, databaseTable: databaseTable1!, callback: callback1!);
             case "deleteDatabase":
-                var database2 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
-                var callback2 : IDatabaseResultCallback? =  DatabaseResultCallbackImpl(id: request.getAsyncId()!)
+                let database2 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
+                let callback2 : IDatabaseResultCallback? =  DatabaseResultCallbackImpl(id: request.getAsyncId()!)
                 self.deleteDatabase(database2!, callback: callback2!);
             case "deleteTable":
-                var database3 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
-                var databaseTable3 : DatabaseTable? = DatabaseTable.Serializer.fromJSON(request.getParameters()![1])
-                var callback3 : IDatabaseTableResultCallback? =  DatabaseTableResultCallbackImpl(id: request.getAsyncId()!)
+                let database3 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
+                let databaseTable3 : DatabaseTable? = DatabaseTable.Serializer.fromJSON(request.getParameters()![1])
+                let callback3 : IDatabaseTableResultCallback? =  DatabaseTableResultCallbackImpl(id: request.getAsyncId()!)
                 self.deleteTable(database3!, databaseTable: databaseTable3!, callback: callback3!);
             case "executeSqlStatement":
-                var database4 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
-                var statement4 : String? = JSONUtil.unescapeString(request.getParameters()![1])
+                let database4 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
+                let statement4 : String? = JSONUtil.unescapeString(request.getParameters()![1])
                 var replacements4 : [String]? = [String]()
-                var replacementsArray4 : [String] = JSONUtil.stringElementToArray(request.getParameters()![2])
+                let replacementsArray4 : [String] = JSONUtil.stringElementToArray(request.getParameters()![2])
                 for replacementsElement4 in replacementsArray4 {
                     replacements4!.append(replacementsElement4)
                 }
-                var callback4 : IDatabaseTableResultCallback? =  DatabaseTableResultCallbackImpl(id: request.getAsyncId()!)
+                let callback4 : IDatabaseTableResultCallback? =  DatabaseTableResultCallbackImpl(id: request.getAsyncId()!)
                 self.executeSqlStatement(database4!, statement: statement4!, replacements: replacements4!, callback: callback4!);
             case "executeSqlTransactions":
-                var database5 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
+                let database5 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
                 var statements5 : [String]? = [String]()
-                var statementsArray5 : [String] = JSONUtil.stringElementToArray(request.getParameters()![1])
+                let statementsArray5 : [String] = JSONUtil.stringElementToArray(request.getParameters()![1])
                 for statementsElement5 in statementsArray5 {
                     statements5!.append(statementsElement5)
                 }
-                var rollbackFlag5 : Bool? = (request.getParameters()![2] as NSString).boolValue
-                var callback5 : IDatabaseTableResultCallback? =  DatabaseTableResultCallbackImpl(id: request.getAsyncId()!)
+                let rollbackFlag5 : Bool? = (request.getParameters()![2] as NSString).boolValue
+                let callback5 : IDatabaseTableResultCallback? =  DatabaseTableResultCallbackImpl(id: request.getAsyncId()!)
                 self.executeSqlTransactions(database5!, statements: statements5!, rollbackFlag: rollbackFlag5!, callback: callback5!);
             case "existsDatabase":
-                var database6 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
-                var response6 : Bool? = self.existsDatabase(database6!)
+                let database6 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
+                let response6 : Bool? = self.existsDatabase(database6!)
                 if let response6 = response6 {
                     responseJSON = "\(response6)"
                  } else {
                     responseJSON = "false"
                  }
             case "existsTable":
-                var database7 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
-                var databaseTable7 : DatabaseTable? = DatabaseTable.Serializer.fromJSON(request.getParameters()![1])
-                var response7 : Bool? = self.existsTable(database7!, databaseTable: databaseTable7!)
+                let database7 : Database? = Database.Serializer.fromJSON(request.getParameters()![0])
+                let databaseTable7 : DatabaseTable? = DatabaseTable.Serializer.fromJSON(request.getParameters()![1])
+                let response7 : Bool? = self.existsTable(database7!, databaseTable: databaseTable7!)
                 if let response7 = response7 {
                     responseJSON = "\(response7)"
                  } else {
@@ -382,7 +382,7 @@ should be passed as a parameter
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "DatabaseBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "DatabaseBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

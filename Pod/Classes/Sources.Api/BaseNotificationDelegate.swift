@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -63,7 +63,7 @@ public class BaseNotificationDelegate : IBaseNotification {
        Return the API version for the given interface.
     */
     public final func getAPIVersion() -> String? {
-        return "v2.2.14"
+        return "v2.2.15"
     }
 
 }

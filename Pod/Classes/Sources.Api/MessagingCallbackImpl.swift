@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -56,7 +56,7 @@ public class MessagingCallbackImpl : BaseCallbackImpl, IMessagingCallback {
        @since v2.0
     */
     public func onError(error : IMessagingCallbackError) { 
-        var param0 : String = "Adaptive.IMessagingCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.IMessagingCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -71,7 +71,7 @@ public class MessagingCallbackImpl : BaseCallbackImpl, IMessagingCallback {
        @since v2.0
     */
     public func onResult(success : Bool) { 
-        var param0 : String = "\(success)"
+        let param0 : String = "\(success)"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -87,8 +87,8 @@ public class MessagingCallbackImpl : BaseCallbackImpl, IMessagingCallback {
        @since v2.0
     */
     public func onWarning(success : Bool, warning : IMessagingCallbackWarning) { 
-        var param0 : String = "\(success)"
-        var param1 : String = "Adaptive.IMessagingCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = "\(success)"
+        let param1 : String = "Adaptive.IMessagingCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!

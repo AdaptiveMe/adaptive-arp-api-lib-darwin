@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -348,14 +348,13 @@ identifiers. This should not be manipulated by the application directly.
     */
     public struct Serializer {
         public static func fromJSON(json : String) -> ServiceRequest {
-            var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
-            var jsonError: NSError?
-            let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
-            return fromDictionary(dict)
+            let data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+            let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            return fromDictionary(dict!)
         }
 
         static func fromDictionary(dict : NSDictionary) -> ServiceRequest {
-            var resultObject : ServiceRequest = ServiceRequest()
+            let resultObject : ServiceRequest = ServiceRequest()
 
             if let value : AnyObject = dict.objectForKey("bodyParameters") {
                 if "\(value)" as NSString != "<null>" {
@@ -381,7 +380,7 @@ identifiers. This should not be manipulated by the application directly.
 
             if let value : AnyObject = dict.objectForKey("contentLength") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as! Int
+                    let numValue = value as! Int
                     resultObject.contentLength = Int32(numValue)
                 }
             }
@@ -440,7 +439,7 @@ identifiers. This should not be manipulated by the application directly.
         }
 
         public static func toJSON(object: ServiceRequest) -> String {
-            var jsonString : NSMutableString = NSMutableString()
+            let jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")
 

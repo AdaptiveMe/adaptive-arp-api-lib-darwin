@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -56,7 +56,7 @@ public class FileDataStoreResultCallbackImpl : BaseCallbackImpl, IFileDataStoreR
        @since v2.0
     */
     public func onError(error : IFileDataStoreResultCallbackError) { 
-        var param0 : String = "Adaptive.IFileDataStoreResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.IFileDataStoreResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -71,7 +71,7 @@ public class FileDataStoreResultCallbackImpl : BaseCallbackImpl, IFileDataStoreR
        @since v2.0
     */
     public func onResult(file : FileDescriptor) { 
-        var param0 : String = "Adaptive.FileDescriptor.toObject(JSON.parse(\"\(JSONUtil.escapeString(FileDescriptor.Serializer.toJSON(file)))\"))"
+        let param0 : String = "Adaptive.FileDescriptor.toObject(JSON.parse(\"\(JSONUtil.escapeString(FileDescriptor.Serializer.toJSON(file)))\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -87,8 +87,8 @@ public class FileDataStoreResultCallbackImpl : BaseCallbackImpl, IFileDataStoreR
        @since v2.0
     */
     public func onWarning(file : FileDescriptor, warning : IFileDataStoreResultCallbackWarning) { 
-        var param0 : String = "Adaptive.FileDescriptor.toObject(JSON.parse(\"\(JSONUtil.escapeString(FileDescriptor.Serializer.toJSON(file)))\"))"
-        var param1 : String = "Adaptive.IFileDataStoreResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.FileDescriptor.toObject(JSON.parse(\"\(JSONUtil.escapeString(FileDescriptor.Serializer.toJSON(file)))\"))"
+        let param1 : String = "Adaptive.IFileDataStoreResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!

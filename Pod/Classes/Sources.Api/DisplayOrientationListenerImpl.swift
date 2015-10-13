@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -57,7 +57,7 @@ platform impedes the rotation of the display.
        @since v2.0.5
     */
     public func onError(error : IDisplayOrientationListenerError) { 
-        var param0 : String = "Adaptive.IDisplayOrientationListenerError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.IDisplayOrientationListenerError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var listenerId : Int64 = -1
         if (getId() != nil) {
             listenerId = getId()!
@@ -72,7 +72,7 @@ platform impedes the rotation of the display.
        @since v2.0.5
     */
     public func onResult(rotationEvent : RotationEvent) { 
-        var param0 : String = "Adaptive.RotationEvent.toObject(JSON.parse(\"\(JSONUtil.escapeString(RotationEvent.Serializer.toJSON(rotationEvent)))\"))"
+        let param0 : String = "Adaptive.RotationEvent.toObject(JSON.parse(\"\(JSONUtil.escapeString(RotationEvent.Serializer.toJSON(rotationEvent)))\"))"
         var listenerId : Int64 = -1
         if (getId() != nil) {
             listenerId = getId()!
@@ -89,8 +89,8 @@ event may be fired if the application vetoes display rotation before rotation is
        @since v2.0.5
     */
     public func onWarning(rotationEvent : RotationEvent, warning : IDisplayOrientationListenerWarning) { 
-        var param0 : String = "Adaptive.RotationEvent.toObject(JSON.parse(\"\(JSONUtil.escapeString(RotationEvent.Serializer.toJSON(rotationEvent)))\"))"
-        var param1 : String = "Adaptive.IDisplayOrientationListenerWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.RotationEvent.toObject(JSON.parse(\"\(JSONUtil.escapeString(RotationEvent.Serializer.toJSON(rotationEvent)))\"))"
+        let param1 : String = "Adaptive.IDisplayOrientationListenerWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var listenerId : Int64 = -1
         if (getId() != nil) {
             listenerId = getId()!

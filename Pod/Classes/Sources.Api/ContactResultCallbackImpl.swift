@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -56,7 +56,7 @@ public class ContactResultCallbackImpl : BaseCallbackImpl, IContactResultCallbac
        @since v2.0
     */
     public func onError(error : IContactResultCallbackError) { 
-        var param0 : String = "Adaptive.IContactResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.IContactResultCallbackError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -71,16 +71,16 @@ public class ContactResultCallbackImpl : BaseCallbackImpl, IContactResultCallbac
        @since v2.0
     */
     public func onResult(contacts : [Contact]) { 
-        var param0Array : NSMutableString = NSMutableString()
+        let param0Array : NSMutableString = NSMutableString()
         param0Array.appendString("[")
-        for (index,obj) in enumerate(contacts) {
+        for (index,obj) in contacts.enumerate() {
             param0Array.appendString("Adaptive.Contact.toObject(JSON.parse(\"\(JSONUtil.escapeString(Contact.Serializer.toJSON(obj)))\"))")
             if index < contacts.count-1 {
                 param0Array.appendString(", ")
             }
         }
         param0Array.appendString("]")
-        var param0 : String = param0Array as String
+        let param0 : String = param0Array as String
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!
@@ -96,17 +96,17 @@ public class ContactResultCallbackImpl : BaseCallbackImpl, IContactResultCallbac
        @since v2.0
     */
     public func onWarning(contacts : [Contact], warning : IContactResultCallbackWarning) { 
-        var param0Array : NSMutableString = NSMutableString()
+        let param0Array : NSMutableString = NSMutableString()
         param0Array.appendString("[")
-        for (index,obj) in enumerate(contacts) {
+        for (index,obj) in contacts.enumerate() {
             param0Array.appendString("Adaptive.Contact.toObject(JSON.parse(\"\(JSONUtil.escapeString(Contact.Serializer.toJSON(obj)))\"))")
             if index < contacts.count-1 {
                 param0Array.appendString(", ")
             }
         }
         param0Array.appendString("]")
-        var param0 : String = param0Array as String
-        var param1 : String = "Adaptive.IContactResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = param0Array as String
+        let param1 : String = "Adaptive.IContactResultCallbackWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var callbackId : Int64 = -1
         if (getId() != nil) {
             callbackId = getId()!

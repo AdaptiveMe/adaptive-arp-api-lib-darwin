@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -57,7 +57,7 @@ listener and subsequently, the listener will be deactivated and removed from the
        @since v2.0
     */
     public func onError(error : IAccelerationListenerError) { 
-        var param0 : String = "Adaptive.IAccelerationListenerError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.IAccelerationListenerError.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(error.toString())\\\"}\"))"
         var listenerId : Int64 = -1
         if (getId() != nil) {
             listenerId = getId()!
@@ -72,7 +72,7 @@ listener and subsequently, the listener will be deactivated and removed from the
        @since v2.0
     */
     public func onResult(acceleration : Acceleration) { 
-        var param0 : String = "Adaptive.Acceleration.toObject(JSON.parse(\"\(JSONUtil.escapeString(Acceleration.Serializer.toJSON(acceleration)))\"))"
+        let param0 : String = "Adaptive.Acceleration.toObject(JSON.parse(\"\(JSONUtil.escapeString(Acceleration.Serializer.toJSON(acceleration)))\"))"
         var listenerId : Int64 = -1
         if (getId() != nil) {
             listenerId = getId()!
@@ -88,8 +88,8 @@ listener and subsequently, the listener will be deactivated and removed from the
        @since v2.0
     */
     public func onWarning(acceleration : Acceleration, warning : IAccelerationListenerWarning) { 
-        var param0 : String = "Adaptive.Acceleration.toObject(JSON.parse(\"\(JSONUtil.escapeString(Acceleration.Serializer.toJSON(acceleration)))\"))"
-        var param1 : String = "Adaptive.IAccelerationListenerWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
+        let param0 : String = "Adaptive.Acceleration.toObject(JSON.parse(\"\(JSONUtil.escapeString(Acceleration.Serializer.toJSON(acceleration)))\"))"
+        let param1 : String = "Adaptive.IAccelerationListenerWarning.toObject(JSON.parse(\"{ \\\"value\\\": \\\"\(warning.toString())\\\"}\"))"
         var listenerId : Int64 = -1
         if (getId() != nil) {
             listenerId = getId()!

@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -77,8 +77,8 @@ public class GlobalizationBridge : BaseApplicationBridge, IGlobalization, APIBri
     */
     public func getDefaultLocale() -> Locale? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "GlobalizationBridge executing getDefaultLocale...")
@@ -106,8 +106,8 @@ public class GlobalizationBridge : BaseApplicationBridge, IGlobalization, APIBri
     */
     public func getLocaleSupportedDescriptors() -> [Locale]? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "GlobalizationBridge executing getLocaleSupportedDescriptors...")
@@ -137,8 +137,8 @@ public class GlobalizationBridge : BaseApplicationBridge, IGlobalization, APIBri
     */
     public func getResourceLiteral(key : String , locale : Locale ) -> String? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "GlobalizationBridge executing getResourceLiteral...")
@@ -167,8 +167,8 @@ public class GlobalizationBridge : BaseApplicationBridge, IGlobalization, APIBri
     */
     public func getResourceLiterals(locale : Locale ) -> [KeyPair]? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "GlobalizationBridge executing getResourceLiterals...")
@@ -195,24 +195,24 @@ public class GlobalizationBridge : BaseApplicationBridge, IGlobalization, APIBri
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "getDefaultLocale":
-                var response0 : Locale? = self.getDefaultLocale()
+                let response0 : Locale? = self.getDefaultLocale()
                 if let response0 = response0 {
                     responseJSON = Locale.Serializer.toJSON(response0)
                 } else {
                     responseJSON = "null"
                 }
             case "getLocaleSupportedDescriptors":
-                var response1 : [Locale]? = self.getLocaleSupportedDescriptors()
+                let response1 : [Locale]? = self.getLocaleSupportedDescriptors()
                 if let response1 = response1 {
-                    var response1JSONArray : NSMutableString = NSMutableString()
+                    let response1JSONArray : NSMutableString = NSMutableString()
                     response1JSONArray.appendString("[ ")
-                    for (index, obj) in enumerate(response1) {
+                    for (index, obj) in response1.enumerate() {
                         response1JSONArray.appendString(Locale.Serializer.toJSON(obj))
                         if index < response1.count-1 {
                             response1JSONArray.appendString(", ")
@@ -224,21 +224,21 @@ public class GlobalizationBridge : BaseApplicationBridge, IGlobalization, APIBri
                     responseJSON = "null"
                 }
             case "getResourceLiteral":
-                var key2 : String? = JSONUtil.unescapeString(request.getParameters()![0])
-                var locale2 : Locale? = Locale.Serializer.fromJSON(request.getParameters()![1])
-                var response2 : String? = self.getResourceLiteral(key2!, locale: locale2!)
+                let key2 : String? = JSONUtil.unescapeString(request.getParameters()![0])
+                let locale2 : Locale? = Locale.Serializer.fromJSON(request.getParameters()![1])
+                let response2 : String? = self.getResourceLiteral(key2!, locale: locale2!)
                 if let response2 = response2 {
                     responseJSON = "\(response2)"
                 } else {
                     responseJSON = "null"
                 }
             case "getResourceLiterals":
-                var locale3 : Locale? = Locale.Serializer.fromJSON(request.getParameters()![0])
-                var response3 : [KeyPair]? = self.getResourceLiterals(locale3!)
+                let locale3 : Locale? = Locale.Serializer.fromJSON(request.getParameters()![0])
+                let response3 : [KeyPair]? = self.getResourceLiterals(locale3!)
                 if let response3 = response3 {
-                    var response3JSONArray : NSMutableString = NSMutableString()
+                    let response3JSONArray : NSMutableString = NSMutableString()
                     response3JSONArray.appendString("[ ")
-                    for (index, obj) in enumerate(response3) {
+                    for (index, obj) in response3.enumerate() {
                         response3JSONArray.appendString(KeyPair.Serializer.toJSON(obj))
                         if index < response3.count-1 {
                             response3JSONArray.appendString(", ")
@@ -252,7 +252,7 @@ public class GlobalizationBridge : BaseApplicationBridge, IGlobalization, APIBri
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "GlobalizationBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "GlobalizationBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

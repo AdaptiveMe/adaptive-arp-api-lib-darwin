@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -63,7 +63,7 @@ public class BaseSecurityBridge : IBaseSecurity {
        Return the API version for the given interface.
     */
     public final func getAPIVersion() -> String? {
-        return "v2.2.14"
+        return "v2.2.15"
     }
 
     /**
@@ -73,15 +73,15 @@ public class BaseSecurityBridge : IBaseSecurity {
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
-        var responseJSON : String? = "null"
+        let responseJSON : String? = "null"
         switch request.getMethodName()! {
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "BaseSecurityBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "BaseSecurityBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

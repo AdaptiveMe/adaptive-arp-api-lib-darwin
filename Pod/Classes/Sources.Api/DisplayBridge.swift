@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -77,8 +77,8 @@ public class DisplayBridge : BaseSystemBridge, IDisplay, APIBridge {
     */
     public func addDisplayOrientationListener(listener : IDisplayOrientationListener ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DisplayBridge executing addDisplayOrientationListener...")
@@ -106,8 +106,8 @@ of the device. For device orientation, use the IDevice APIs.
     */
     public func getOrientationCurrent() -> ICapabilitiesOrientation? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DisplayBridge executing getOrientationCurrent...")
@@ -135,8 +135,8 @@ of the device. For device orientation, use the IDevice APIs.
     */
     public func removeDisplayOrientationListener(listener : IDisplayOrientationListener ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DisplayBridge executing removeDisplayOrientationListener...")
@@ -162,8 +162,8 @@ of the device. For device orientation, use the IDevice APIs.
     */
     public func removeDisplayOrientationListeners() {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "DisplayBridge executing removeDisplayOrientationListeners...")
@@ -189,30 +189,30 @@ of the device. For device orientation, use the IDevice APIs.
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "addDisplayOrientationListener":
-                var listener0 : IDisplayOrientationListener? =  DisplayOrientationListenerImpl(id: request.getAsyncId()!)
+                let listener0 : IDisplayOrientationListener? =  DisplayOrientationListenerImpl(id: request.getAsyncId()!)
                 self.addDisplayOrientationListener(listener0!);
             case "getOrientationCurrent":
-                var response1 : ICapabilitiesOrientation? = self.getOrientationCurrent()
+                let response1 : ICapabilitiesOrientation? = self.getOrientationCurrent()
                 if let response1 = response1 {
                     responseJSON = "{ \"value\": \"\(response1.toString())\" }"
                 } else {
                     responseJSON = "{ \"value\": \"Unknown\" }"
                 }
             case "removeDisplayOrientationListener":
-                var listener2 : IDisplayOrientationListener? =  DisplayOrientationListenerImpl(id: request.getAsyncId()!)
+                let listener2 : IDisplayOrientationListener? =  DisplayOrientationListenerImpl(id: request.getAsyncId()!)
                 self.removeDisplayOrientationListener(listener2!);
             case "removeDisplayOrientationListeners":
                 self.removeDisplayOrientationListeners();
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "DisplayBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "DisplayBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

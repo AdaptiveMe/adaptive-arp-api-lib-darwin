@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -78,8 +78,8 @@ public class ContactBridge : BasePIMBridge, IContact, APIBridge {
     */
     public func getContact(contact : ContactUid , callback : IContactResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ContactBridge executing getContact...")
@@ -107,8 +107,8 @@ public class ContactBridge : BasePIMBridge, IContact, APIBridge {
     */
     public func getContactPhoto(contact : ContactUid , callback : IContactPhotoResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ContactBridge executing getContactPhoto...")
@@ -135,8 +135,8 @@ public class ContactBridge : BasePIMBridge, IContact, APIBridge {
     */
     public func getContacts(callback : IContactResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ContactBridge executing getContacts...")
@@ -164,8 +164,8 @@ public class ContactBridge : BasePIMBridge, IContact, APIBridge {
     */
     public func getContactsForFields(callback : IContactResultCallback , fields : [IContactFieldGroup] ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ContactBridge executing getContactsForFields...")
@@ -194,8 +194,8 @@ public class ContactBridge : BasePIMBridge, IContact, APIBridge {
     */
     public func getContactsWithFilter(callback : IContactResultCallback , fields : [IContactFieldGroup] , filter : [IContactFilter] ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ContactBridge executing getContactsWithFilter...")
@@ -223,8 +223,8 @@ public class ContactBridge : BasePIMBridge, IContact, APIBridge {
     */
     public func searchContacts(term : String , callback : IContactResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ContactBridge executing searchContacts...")
@@ -253,8 +253,8 @@ public class ContactBridge : BasePIMBridge, IContact, APIBridge {
     */
     public func searchContactsWithFilter(term : String , callback : IContactResultCallback , filter : [IContactFilter] ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ContactBridge executing searchContactsWithFilter...")
@@ -283,8 +283,8 @@ public class ContactBridge : BasePIMBridge, IContact, APIBridge {
     */
     public func setContactPhoto(contact : ContactUid , pngImage : [UInt8] ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "ContactBridge executing setContactPhoto...")
@@ -311,64 +311,64 @@ public class ContactBridge : BasePIMBridge, IContact, APIBridge {
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "getContact":
-                var contact0 : ContactUid? = ContactUid.Serializer.fromJSON(request.getParameters()![0])
-                var callback0 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
+                let contact0 : ContactUid? = ContactUid.Serializer.fromJSON(request.getParameters()![0])
+                let callback0 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
                 self.getContact(contact0!, callback: callback0!);
             case "getContactPhoto":
-                var contact1 : ContactUid? = ContactUid.Serializer.fromJSON(request.getParameters()![0])
-                var callback1 : IContactPhotoResultCallback? =  ContactPhotoResultCallbackImpl(id: request.getAsyncId()!)
+                let contact1 : ContactUid? = ContactUid.Serializer.fromJSON(request.getParameters()![0])
+                let callback1 : IContactPhotoResultCallback? =  ContactPhotoResultCallbackImpl(id: request.getAsyncId()!)
                 self.getContactPhoto(contact1!, callback: callback1!);
             case "getContacts":
-                var callback2 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
+                let callback2 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
                 self.getContacts(callback2!);
             case "getContactsForFields":
-                var callback3 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
+                let callback3 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
                 var fields3 : [IContactFieldGroup]? = [IContactFieldGroup]()
-                var fieldsArray3 : [String] = JSONUtil.stringElementToArray(request.getParameters()![0])
+                let fieldsArray3 : [String] = JSONUtil.stringElementToArray(request.getParameters()![0])
                 for fieldsElement3 in fieldsArray3 {
                     fields3!.append(IContactFieldGroup.toEnum(JSONUtil.dictionifyJSON(fieldsElement3)["value"] as? String)) /* MARK */
                 }
                 self.getContactsForFields(callback3!, fields: fields3!);
             case "getContactsWithFilter":
-                var callback4 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
+                let callback4 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
                 var fields4 : [IContactFieldGroup]? = [IContactFieldGroup]()
-                var fieldsArray4 : [String] = JSONUtil.stringElementToArray(request.getParameters()![0])
+                let fieldsArray4 : [String] = JSONUtil.stringElementToArray(request.getParameters()![0])
                 for fieldsElement4 in fieldsArray4 {
                     fields4!.append(IContactFieldGroup.toEnum(JSONUtil.dictionifyJSON(fieldsElement4)["value"] as? String)) /* MARK */
                 }
                 var filter4 : [IContactFilter]? = [IContactFilter]()
-                var filterArray4 : [String] = JSONUtil.stringElementToArray(request.getParameters()![1])
+                let filterArray4 : [String] = JSONUtil.stringElementToArray(request.getParameters()![1])
                 for filterElement4 in filterArray4 {
                     filter4!.append(IContactFilter.toEnum(JSONUtil.dictionifyJSON(filterElement4)["value"] as? String)) /* MARK */
                 }
                 self.getContactsWithFilter(callback4!, fields: fields4!, filter: filter4!);
             case "searchContacts":
-                var term5 : String? = JSONUtil.unescapeString(request.getParameters()![0])
-                var callback5 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
+                let term5 : String? = JSONUtil.unescapeString(request.getParameters()![0])
+                let callback5 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
                 self.searchContacts(term5!, callback: callback5!);
             case "searchContactsWithFilter":
-                var term6 : String? = JSONUtil.unescapeString(request.getParameters()![0])
-                var callback6 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
+                let term6 : String? = JSONUtil.unescapeString(request.getParameters()![0])
+                let callback6 : IContactResultCallback? =  ContactResultCallbackImpl(id: request.getAsyncId()!)
                 var filter6 : [IContactFilter]? = [IContactFilter]()
-                var filterArray6 : [String] = JSONUtil.stringElementToArray(request.getParameters()![1])
+                let filterArray6 : [String] = JSONUtil.stringElementToArray(request.getParameters()![1])
                 for filterElement6 in filterArray6 {
                     filter6!.append(IContactFilter.toEnum(JSONUtil.dictionifyJSON(filterElement6)["value"] as? String)) /* MARK */
                 }
                 self.searchContactsWithFilter(term6!, callback: callback6!, filter: filter6!);
             case "setContactPhoto":
-                var contact7 : ContactUid? = ContactUid.Serializer.fromJSON(request.getParameters()![0])
+                let contact7 : ContactUid? = ContactUid.Serializer.fromJSON(request.getParameters()![0])
                 var pngImage7 : [UInt8]? = [UInt8]()
-                var pngImageArray7 : [String] = JSONUtil.stringElementToArray(request.getParameters()![1])
+                let pngImageArray7 : [String] = JSONUtil.stringElementToArray(request.getParameters()![1])
                 for pngImageElement7 in pngImageArray7 {
                     pngImage7!.append(UInt8((pngImageElement7 as NSString).intValue))
                 }
-                var response7 : Bool? = self.setContactPhoto(contact7!, pngImage: pngImage7!)
+                let response7 : Bool? = self.setContactPhoto(contact7!, pngImage: pngImage7!)
                 if let response7 = response7 {
                     responseJSON = "\(response7)"
                  } else {
@@ -377,7 +377,7 @@ public class ContactBridge : BasePIMBridge, IContact, APIBridge {
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "ContactBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "ContactBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

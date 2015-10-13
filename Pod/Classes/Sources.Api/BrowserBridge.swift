@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -78,8 +78,8 @@ public class BrowserBridge : BaseUIBridge, IBrowser, APIBridge {
     */
     public func openExtenalBrowser(url : String ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "BrowserBridge executing openExtenalBrowser...")
@@ -110,8 +110,8 @@ public class BrowserBridge : BaseUIBridge, IBrowser, APIBridge {
     */
     public func openInternalBrowser(url : String , title : String , backButtonText : String ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "BrowserBridge executing openInternalBrowser...")
@@ -142,8 +142,8 @@ public class BrowserBridge : BaseUIBridge, IBrowser, APIBridge {
     */
     public func openInternalBrowserModal(url : String , title : String , backButtonText : String ) -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "BrowserBridge executing openInternalBrowserModal...")
@@ -170,34 +170,34 @@ public class BrowserBridge : BaseUIBridge, IBrowser, APIBridge {
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "openExtenalBrowser":
-                var url0 : String? = JSONUtil.unescapeString(request.getParameters()![0])
-                var response0 : Bool? = self.openExtenalBrowser(url0!)
+                let url0 : String? = JSONUtil.unescapeString(request.getParameters()![0])
+                let response0 : Bool? = self.openExtenalBrowser(url0!)
                 if let response0 = response0 {
                     responseJSON = "\(response0)"
                  } else {
                     responseJSON = "false"
                  }
             case "openInternalBrowser":
-                var url1 : String? = JSONUtil.unescapeString(request.getParameters()![0])
-                var title1 : String? = JSONUtil.unescapeString(request.getParameters()![1])
-                var backButtonText1 : String? = JSONUtil.unescapeString(request.getParameters()![2])
-                var response1 : Bool? = self.openInternalBrowser(url1!, title: title1!, backButtonText: backButtonText1!)
+                let url1 : String? = JSONUtil.unescapeString(request.getParameters()![0])
+                let title1 : String? = JSONUtil.unescapeString(request.getParameters()![1])
+                let backButtonText1 : String? = JSONUtil.unescapeString(request.getParameters()![2])
+                let response1 : Bool? = self.openInternalBrowser(url1!, title: title1!, backButtonText: backButtonText1!)
                 if let response1 = response1 {
                     responseJSON = "\(response1)"
                  } else {
                     responseJSON = "false"
                  }
             case "openInternalBrowserModal":
-                var url2 : String? = JSONUtil.unescapeString(request.getParameters()![0])
-                var title2 : String? = JSONUtil.unescapeString(request.getParameters()![1])
-                var backButtonText2 : String? = JSONUtil.unescapeString(request.getParameters()![2])
-                var response2 : Bool? = self.openInternalBrowserModal(url2!, title: title2!, backButtonText: backButtonText2!)
+                let url2 : String? = JSONUtil.unescapeString(request.getParameters()![0])
+                let title2 : String? = JSONUtil.unescapeString(request.getParameters()![1])
+                let backButtonText2 : String? = JSONUtil.unescapeString(request.getParameters()![2])
+                let response2 : Bool? = self.openInternalBrowserModal(url2!, title: title2!, backButtonText: backButtonText2!)
                 if let response2 = response2 {
                     responseJSON = "\(response2)"
                  } else {
@@ -206,7 +206,7 @@ public class BrowserBridge : BaseUIBridge, IBrowser, APIBridge {
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "BrowserBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "BrowserBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

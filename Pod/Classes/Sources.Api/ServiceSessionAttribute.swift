@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -70,14 +70,13 @@ public class ServiceSessionAttribute : KeyValue {
     */
     public struct Serializer {
         public static func fromJSON(json : String) -> ServiceSessionAttribute {
-            var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
-            var jsonError: NSError?
-            let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
-            return fromDictionary(dict)
+            let data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+            let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            return fromDictionary(dict!)
         }
 
         static func fromDictionary(dict : NSDictionary) -> ServiceSessionAttribute {
-            var resultObject : ServiceSessionAttribute = ServiceSessionAttribute()
+            let resultObject : ServiceSessionAttribute = ServiceSessionAttribute()
 
             if let value : AnyObject = dict.objectForKey("keyData") {
                 if "\(value)" as NSString != "<null>" {
@@ -95,7 +94,7 @@ public class ServiceSessionAttribute : KeyValue {
         }
 
         public static func toJSON(object: ServiceSessionAttribute) -> String {
-            var jsonString : NSMutableString = NSMutableString()
+            let jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")
 

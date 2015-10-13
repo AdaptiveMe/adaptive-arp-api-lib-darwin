@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -78,8 +78,8 @@ public class MailBridge : BasePIMBridge, IMail, APIBridge {
     */
     public func sendEmail(data : Email , callback : IMessagingCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "MailBridge executing sendEmail...")
@@ -105,19 +105,19 @@ public class MailBridge : BasePIMBridge, IMail, APIBridge {
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
-        var responseJSON : String? = "null"
+        let responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "sendEmail":
-                var data0 : Email? = Email.Serializer.fromJSON(request.getParameters()![0])
-                var callback0 : IMessagingCallback? =  MessagingCallbackImpl(id: request.getAsyncId()!)
+                let data0 : Email? = Email.Serializer.fromJSON(request.getParameters()![0])
+                let callback0 : IMessagingCallback? =  MessagingCallbackImpl(id: request.getAsyncId()!)
                 self.sendEmail(data0!, callback: callback0!);
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "MailBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "MailBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

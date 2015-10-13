@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -150,14 +150,13 @@ public class APIResponse {
     */
     public struct Serializer {
         public static func fromJSON(json : String) -> APIResponse {
-            var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
-            var jsonError: NSError?
-            let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
-            return fromDictionary(dict)
+            let data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+            let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            return fromDictionary(dict!)
         }
 
         static func fromDictionary(dict : NSDictionary) -> APIResponse {
-            var resultObject : APIResponse = APIResponse()
+            let resultObject : APIResponse = APIResponse()
 
             if let value : AnyObject = dict.objectForKey("response") {
                 if "\(value)" as NSString != "<null>" {
@@ -167,7 +166,7 @@ public class APIResponse {
 
             if let value : AnyObject = dict.objectForKey("statusCode") {
                 if "\(value)" as NSString != "<null>" {
-                    var numValue = value as! Int
+                    let numValue = value as! Int
                     resultObject.statusCode = Int32(numValue)
                 }
             }
@@ -182,7 +181,7 @@ public class APIResponse {
         }
 
         public static func toJSON(object: APIResponse) -> String {
-            var jsonString : NSMutableString = NSMutableString()
+            let jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")
 

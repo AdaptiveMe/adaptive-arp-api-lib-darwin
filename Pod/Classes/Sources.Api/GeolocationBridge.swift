@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -77,8 +77,8 @@ public class GeolocationBridge : BaseSensorBridge, IGeolocation, APIBridge {
     */
     public func addGeolocationListener(listener : IGeolocationListener ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "GeolocationBridge executing addGeolocationListener...")
@@ -105,8 +105,8 @@ public class GeolocationBridge : BaseSensorBridge, IGeolocation, APIBridge {
     */
     public func removeGeolocationListener(listener : IGeolocationListener ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "GeolocationBridge executing removeGeolocationListener...")
@@ -132,8 +132,8 @@ public class GeolocationBridge : BaseSensorBridge, IGeolocation, APIBridge {
     */
     public func removeGeolocationListeners() {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "GeolocationBridge executing removeGeolocationListeners...")
@@ -159,23 +159,23 @@ public class GeolocationBridge : BaseSensorBridge, IGeolocation, APIBridge {
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
-        var responseJSON : String? = "null"
+        let responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "addGeolocationListener":
-                var listener0 : IGeolocationListener? =  GeolocationListenerImpl(id: request.getAsyncId()!)
+                let listener0 : IGeolocationListener? =  GeolocationListenerImpl(id: request.getAsyncId()!)
                 self.addGeolocationListener(listener0!);
             case "removeGeolocationListener":
-                var listener1 : IGeolocationListener? =  GeolocationListenerImpl(id: request.getAsyncId()!)
+                let listener1 : IGeolocationListener? =  GeolocationListenerImpl(id: request.getAsyncId()!)
                 self.removeGeolocationListener(listener1!);
             case "removeGeolocationListeners":
                 self.removeGeolocationListeners();
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "GeolocationBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "GeolocationBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

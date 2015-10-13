@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -79,8 +79,8 @@ public class SecurityBridge : BaseSecurityBridge, ISecurity, APIBridge {
     */
     public func deleteSecureKeyValuePairs(keys : [String] , publicAccessName : String , callback : ISecurityResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "SecurityBridge executing deleteSecureKeyValuePairs...")
@@ -109,8 +109,8 @@ public class SecurityBridge : BaseSecurityBridge, ISecurity, APIBridge {
     */
     public func getSecureKeyValuePairs(keys : [String] , publicAccessName : String , callback : ISecurityResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "SecurityBridge executing getSecureKeyValuePairs...")
@@ -137,8 +137,8 @@ public class SecurityBridge : BaseSecurityBridge, ISecurity, APIBridge {
     */
     public func isDeviceModified() -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "SecurityBridge executing isDeviceModified...")
@@ -168,8 +168,8 @@ public class SecurityBridge : BaseSecurityBridge, ISecurity, APIBridge {
     */
     public func setSecureKeyValuePairs(keyValues : [SecureKeyPair] , publicAccessName : String , callback : ISecurityResultCallback ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "SecurityBridge executing setSecureKeyValuePairs...")
@@ -195,31 +195,31 @@ public class SecurityBridge : BaseSecurityBridge, ISecurity, APIBridge {
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "deleteSecureKeyValuePairs":
                 var keys0 : [String]? = [String]()
-                var keysArray0 : [String] = JSONUtil.stringElementToArray(request.getParameters()![0])
+                let keysArray0 : [String] = JSONUtil.stringElementToArray(request.getParameters()![0])
                 for keysElement0 in keysArray0 {
                     keys0!.append(keysElement0)
                 }
-                var publicAccessName0 : String? = JSONUtil.unescapeString(request.getParameters()![1])
-                var callback0 : ISecurityResultCallback? =  SecurityResultCallbackImpl(id: request.getAsyncId()!)
+                let publicAccessName0 : String? = JSONUtil.unescapeString(request.getParameters()![1])
+                let callback0 : ISecurityResultCallback? =  SecurityResultCallbackImpl(id: request.getAsyncId()!)
                 self.deleteSecureKeyValuePairs(keys0!, publicAccessName: publicAccessName0!, callback: callback0!);
             case "getSecureKeyValuePairs":
                 var keys1 : [String]? = [String]()
-                var keysArray1 : [String] = JSONUtil.stringElementToArray(request.getParameters()![0])
+                let keysArray1 : [String] = JSONUtil.stringElementToArray(request.getParameters()![0])
                 for keysElement1 in keysArray1 {
                     keys1!.append(keysElement1)
                 }
-                var publicAccessName1 : String? = JSONUtil.unescapeString(request.getParameters()![1])
-                var callback1 : ISecurityResultCallback? =  SecurityResultCallbackImpl(id: request.getAsyncId()!)
+                let publicAccessName1 : String? = JSONUtil.unescapeString(request.getParameters()![1])
+                let callback1 : ISecurityResultCallback? =  SecurityResultCallbackImpl(id: request.getAsyncId()!)
                 self.getSecureKeyValuePairs(keys1!, publicAccessName: publicAccessName1!, callback: callback1!);
             case "isDeviceModified":
-                var response2 : Bool? = self.isDeviceModified()
+                let response2 : Bool? = self.isDeviceModified()
                 if let response2 = response2 {
                     responseJSON = "\(response2)"
                  } else {
@@ -227,17 +227,17 @@ public class SecurityBridge : BaseSecurityBridge, ISecurity, APIBridge {
                  }
             case "setSecureKeyValuePairs":
                 var keyValues3 : [SecureKeyPair]? = [SecureKeyPair]()
-                var keyValuesArray3 : [String] = JSONUtil.stringElementToArray(request.getParameters()![0])
+                let keyValuesArray3 : [String] = JSONUtil.stringElementToArray(request.getParameters()![0])
                 for keyValuesElement3 in keyValuesArray3 {
                     keyValues3!.append(SecureKeyPair.Serializer.fromJSON(keyValuesElement3))
                 }
-                var publicAccessName3 : String? = JSONUtil.unescapeString(request.getParameters()![1])
-                var callback3 : ISecurityResultCallback? =  SecurityResultCallbackImpl(id: request.getAsyncId()!)
+                let publicAccessName3 : String? = JSONUtil.unescapeString(request.getParameters()![1])
+                let callback3 : ISecurityResultCallback? =  SecurityResultCallbackImpl(id: request.getAsyncId()!)
                 self.setSecureKeyValuePairs(keyValues3!, publicAccessName: publicAccessName3!, callback: callback3!);
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "SecurityBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "SecurityBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

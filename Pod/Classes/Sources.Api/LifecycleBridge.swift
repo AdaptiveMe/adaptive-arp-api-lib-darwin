@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -77,8 +77,8 @@ public class LifecycleBridge : BaseApplicationBridge, ILifecycle, APIBridge {
     */
     public func addLifecycleListener(listener : ILifecycleListener ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "LifecycleBridge executing addLifecycleListener...")
@@ -105,8 +105,8 @@ public class LifecycleBridge : BaseApplicationBridge, ILifecycle, APIBridge {
     */
     public func isBackground() -> Bool? {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "LifecycleBridge executing isBackground...")
@@ -134,8 +134,8 @@ public class LifecycleBridge : BaseApplicationBridge, ILifecycle, APIBridge {
     */
     public func removeLifecycleListener(listener : ILifecycleListener ) {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "LifecycleBridge executing removeLifecycleListener...")
@@ -161,8 +161,8 @@ public class LifecycleBridge : BaseApplicationBridge, ILifecycle, APIBridge {
     */
     public func removeLifecycleListeners() {
         // Start logging elapsed time.
-        var tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
-        var logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
+        let tIn : NSTimeInterval = NSDate.timeIntervalSinceReferenceDate()
+        let logger : ILogging? = AppRegistryBridge.sharedInstance.getLoggingBridge()
 
         if (logger != nil) {
             logger!.log(ILoggingLogLevel.Debug, category: getAPIGroup()!.toString(), message: "LifecycleBridge executing removeLifecycleListeners...")
@@ -188,30 +188,30 @@ public class LifecycleBridge : BaseApplicationBridge, ILifecycle, APIBridge {
        @return APIResponse with status code, message and JSON response or a JSON null string for void functions. Status code 200 is OK, all others are HTTP standard error conditions.
     */
     public override func invoke(request : APIRequest) -> APIResponse? {
-        var response : APIResponse = APIResponse()
+        let response : APIResponse = APIResponse()
         var responseCode : Int32 = 200
         var responseMessage : String = "OK"
         var responseJSON : String? = "null"
         switch request.getMethodName()! {
             case "addLifecycleListener":
-                var listener0 : ILifecycleListener? =  LifecycleListenerImpl(id: request.getAsyncId()!)
+                let listener0 : ILifecycleListener? =  LifecycleListenerImpl(id: request.getAsyncId()!)
                 self.addLifecycleListener(listener0!);
             case "isBackground":
-                var response1 : Bool? = self.isBackground()
+                let response1 : Bool? = self.isBackground()
                 if let response1 = response1 {
                     responseJSON = "\(response1)"
                  } else {
                     responseJSON = "false"
                  }
             case "removeLifecycleListener":
-                var listener2 : ILifecycleListener? =  LifecycleListenerImpl(id: request.getAsyncId()!)
+                let listener2 : ILifecycleListener? =  LifecycleListenerImpl(id: request.getAsyncId()!)
                 self.removeLifecycleListener(listener2!);
             case "removeLifecycleListeners":
                 self.removeLifecycleListeners();
             default:
                 // 404 - response null.
                 responseCode = 404
-                responseMessage = "LifecycleBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.14."
+                responseMessage = "LifecycleBridge does not provide the function '\(request.getMethodName()!)' Please check your client-side API version; should be API version >= v2.2.15."
         }
         response.setResponse(responseJSON!)
         response.setStatusCode(responseCode)

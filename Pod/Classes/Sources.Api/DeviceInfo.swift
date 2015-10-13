@@ -27,7 +27,7 @@ Contributors:
 
 Release:
 
-    * @version v2.2.14
+    * @version v2.2.15
 
 -------------------------------------------| aut inveniam viam aut faciam |--------------------------------------------
 */
@@ -171,14 +171,13 @@ be unique for a specific instance of an application on a specific device.
     */
     public struct Serializer {
         public static func fromJSON(json : String) -> DeviceInfo {
-            var data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
-            var jsonError: NSError?
-            let dict = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &jsonError) as! NSDictionary
-            return fromDictionary(dict)
+            let data:NSData = json.dataUsingEncoding(NSUTF8StringEncoding)!
+            let dict = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            return fromDictionary(dict!)
         }
 
         static func fromDictionary(dict : NSDictionary) -> DeviceInfo {
-            var resultObject : DeviceInfo = DeviceInfo()
+            let resultObject : DeviceInfo = DeviceInfo()
 
             if let value : AnyObject = dict.objectForKey("model") {
                 if "\(value)" as NSString != "<null>" {
@@ -208,7 +207,7 @@ be unique for a specific instance of an application on a specific device.
         }
 
         public static func toJSON(object: DeviceInfo) -> String {
-            var jsonString : NSMutableString = NSMutableString()
+            let jsonString : NSMutableString = NSMutableString()
             // Start Object to JSON
             jsonString.appendString("{ ")
 
